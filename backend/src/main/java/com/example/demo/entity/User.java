@@ -1,6 +1,5 @@
 package com.example.demo.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.Data;
 import javax.persistence.*;
 
@@ -20,6 +19,18 @@ public class User {
     private String Phone;
     private String Email;
     private Boolean Role;
+
+    public User() {}
+
+    public User(String username, String password, String email, Boolean role,  String phone) {
+        this.User_Name = username;
+        this.Password = password;
+        this.Email = email;
+        this.Role = role;
+        this.Phone = phone;
+
+    }
+
 
     @Basic
     @Column(name="UserName")
