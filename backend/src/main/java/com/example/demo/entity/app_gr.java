@@ -1,13 +1,12 @@
 package com.example.demo.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.Data;
 import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name="app_gr")
-public class App_gr {
+class App_gr {
     @Id
     @Column(name="User_ID")
     private int User_ID;
