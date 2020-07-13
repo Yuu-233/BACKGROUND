@@ -1,13 +1,11 @@
 package com.example.demo.entity.CompositePK;
 import lombok.Data;
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Data
 @Embeddable
-public class SkillPK implements Serializable{
-    private int Skill_ID;
-    private String Certificate;
+public class Apply_InfoPK implements Serializable{
+    private int User_ID;
+    private int Rec_ID;
 }
-
