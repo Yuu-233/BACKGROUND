@@ -33,7 +33,7 @@ public class User {
 
 
     @Basic
-    @Column(name="UserName")
+    @Column(name="User_Name")
     public String getUserName(){return User_Name;}
     public void setUserName(String user_Name){this.User_Name=user_Name;}
 
