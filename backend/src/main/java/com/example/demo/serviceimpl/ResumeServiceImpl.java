@@ -20,5 +20,8 @@ public class ResumeServiceImpl implements ResumeService {
     public void alter_resume(Integer user_id, String name, Boolean gender,String birth,String experience,String education){
         resumeDao.alter_resume(user_id,name,gender,birth,experience,education);
     }
+    public List<Resume> filt_applicants(String experience,String education){
+        return resumeDao.filt_applicants(experience,education);
+    }
 
 }

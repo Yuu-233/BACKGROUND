@@ -30,4 +30,14 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
+    @Override
+    public User getUserbyId(Integer userid){
+        return userDao.getUserbyId(userid);
+    }
+
+    @Override
+    public void alter_user_info(Integer userid,String username,String password,String phone,String email,Boolean role){
+        userDao.alter_user_info(userid,username,password,phone,email,role);
+    }
+
 }

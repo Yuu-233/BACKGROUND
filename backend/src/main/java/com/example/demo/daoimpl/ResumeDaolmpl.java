@@ -28,4 +28,18 @@ public class ResumeDaolmpl implements ResumeDao {
            else
                 resumeRepository.add_resume(user_id,name,gender,birth,experience,education);
      }
+
+     @Override
+     public List<Resume> filt_applicants(String experience,String education){
+         /*String[] splitSalary;
+         String[] splitTags;
+         String lowsalary=null;
+         String highsalary=null;
+         if(salary!=null) {
+             splitSalary = salary.split("-");
+             lowsalary = splitSalary[0];
+             highsalary = splitSalary[splitSalary.length - 1];
+         }*/  //Resume中未设置期望薪酬
+         return resumeRepository.filt_applicants(experience,education);
+     }
 }

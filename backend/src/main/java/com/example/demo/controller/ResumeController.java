@@ -28,4 +28,12 @@ public class ResumeController {
     private void alter_resume(@RequestParam("user_id") Integer user_id, @RequestParam("name")String name, @RequestParam("gender")Boolean gender,@RequestParam("birth")String birth,@RequestParam("experience")String experience,@RequestParam("education")String education){
       resumeService.alter_resume(user_id,name,gender,birth,experience,education);
     }
+
+    @CrossOrigin
+    @RequestMapping("/filt_applicants")
+    private List<Resume> filt_applicants(
+                         @RequestParam(value="experience",required = false)String experience,
+                         @RequestParam(value="education",required = false)String education){
+        return resumeService.filt_applicants(experience,education);
+    }
 }
