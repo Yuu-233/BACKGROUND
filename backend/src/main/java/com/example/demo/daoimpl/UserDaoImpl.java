@@ -20,4 +20,15 @@ public class UserDaoImpl implements UserDao {
     public User findUserByUsername (String username) {return userRepository.findUserByUsername(username);}
     @Override
     public void save (User user) {userRepository.save(user);}
+
+    @Override
+    public User getUserbyId(Integer userid){
+        return userRepository.getUserbyId(userid);
+    }
+
+    @Override
+    public void alter_user_info(Integer userid,String username,String password,String phone,String email,Boolean role)
+    {
+       userRepository.alter_user_info(userid,username,password,phone,email,role);
+    }
 }

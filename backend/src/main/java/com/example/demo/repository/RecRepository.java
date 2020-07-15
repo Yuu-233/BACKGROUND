@@ -9,4 +9,10 @@ import java.util.List;
 public interface RecRepository extends JpaRepository<Recruit_Info,Integer> {
     @Query(value = "select * from recruit_info",nativeQuery = true)
     List<Recruit_Info> get_jobs();
+
+    @Query(value="select * from recruit_info where" +
+            " substring_index(Rec_Salary,'-',1)>=?1 and substring_index(Rec_Salary,'-',-1) <=?2" +
+            " and Rec_Cate = ?3 and Rec_Location = ?4 and Rec_Title like CONCAT('%',?5,'%')" +
+            " and Rec_Experience = ?6 and Rec_education = ?7",nativeQuery = true)
+    List<Recruit_Info> filt_jobs(String lowsalary,String highsalary,String cate,String location,String title,String experience,String education);
 }

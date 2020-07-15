@@ -27,4 +27,7 @@ public interface ResumeRepository extends JpaRepository<Resume,Integer> {
     @Modifying
     @Query(value="update resume set Name=?2,Gender=?3,Birth=?4,Experience=?5,Education=?6 where User_ID=?1",nativeQuery = true)
     void alter_resume(Integer user_id, String name, Boolean gender,String birth,String experience,String education);
+
+    @Query(value="select * from resume where Experience = ?1 and Education = ?2",nativeQuery = true)
+    List<Resume> filt_applicants(String experience,String education);
 }

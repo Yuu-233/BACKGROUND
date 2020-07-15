@@ -17,4 +17,18 @@ public class RecDaoImpl implements RecDao {
     public List<Recruit_Info> get_jobs(){
         return recRepository.get_jobs();
     }
+
+    public List<Recruit_Info> filt_jobs(String salary,String cate,String location,String title,String experience,String education){
+        String[] splitSalary;
+        String[] splitTags;//筛选tag备用
+        String lowsalary=null;
+        String highsalary=null;
+        List<Recruit_Info> tmplist;//筛选tag备用
+        if(salary!=null) {
+            splitSalary = salary.split("-");
+            lowsalary = splitSalary[0];
+            highsalary = splitSalary[splitSalary.length - 1];
+        }
+        return recRepository.filt_jobs(lowsalary,highsalary,cate,location,title,experience,education);
+    }
 }

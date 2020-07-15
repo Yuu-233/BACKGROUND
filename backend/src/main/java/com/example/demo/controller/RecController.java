@@ -17,4 +17,15 @@ public class RecController {
     public List<Recruit_Info> get_jobs(){
         return recService.get_jobs();
     }
+
+    @CrossOrigin
+    @RequestMapping("/filt_jobs")
+    public List<Recruit_Info> filt_jobs(@RequestParam(value="salary",required = false)String salary,
+                                        @RequestParam(value="cate",required = false)String cate,
+                                        @RequestParam(value="location",required = false)String location,
+                                        @RequestParam(value="title",required = false)String title,
+                                        @RequestParam(value="experience",required = false)String experience,
+                                        @RequestParam(value="education",required = false)String education
+                                       )
+    {return recService.filt_jobs(salary,cate,location,title,experience,education);}
 }
