@@ -3,6 +3,7 @@ package com.example.demo.serviceimpl;
 import com.example.demo.dao.ResumeDao;
 import com.example.demo.entity.Resume;
 import com.example.demo.service.ResumeService;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,9 @@ public class ResumeServiceImpl implements ResumeService {
 
     public List<Resume> get_applicants(){
         return resumeDao.get_applicants();
+    }
+    public void alter_resume(Integer user_id, String name, Boolean gender,String birth,String experience,String education){
+        resumeDao.alter_resume(user_id,name,gender,birth,experience,education);
     }
 
 }
