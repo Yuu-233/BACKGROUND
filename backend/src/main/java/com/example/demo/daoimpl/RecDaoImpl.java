@@ -29,6 +29,23 @@ public class RecDaoImpl implements RecDao {
             lowsalary = splitSalary[0];
             highsalary = splitSalary[splitSalary.length - 1];
         }
+        else{
+            lowsalary="10000000";
+            highsalary="0";
+        }
+           if(cate == null) cate="";
+           if(location == null) location = "";
+           if(title == null) title="";
+           if(experience == null || experience.equals("不限")) experience="";
+           if(education == null || education.equals("不限")) education = "";
+
+           System.out.println(lowsalary);
+        System.out.println(highsalary);
+        System.out.println(cate);
+        System.out.println(title);
+        System.out.println(experience);
+        System.out.println(education);
+
         return recRepository.filt_jobs(lowsalary,highsalary,cate,location,title,experience,education);
     }
 }

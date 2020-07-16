@@ -12,5 +12,5 @@ public class Rec_Comment {
     private Rec_CommentPK rec_commentPK;
 
     private String Rec_Comm;
-    private int Rec_Grade;
+    private Integer Rec_Grade;
 }

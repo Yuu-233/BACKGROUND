@@ -10,12 +10,12 @@ import javax.persistence.*;
 public class App_Gr {
     @Id
     @Column(name="User_ID")
-    private int User_ID;
-    public int getUser_ID(){return User_ID;}
-    public void setUser_ID(int user_id){this.User_ID=user_id;}
+    private Integer User_ID;
+    public Integer getUser_ID(){return User_ID;}
+    public void setUser_ID(Integer user_id){this.User_ID=user_id;}
 
     private Float App_Avg_Grade;
-    private int App_Grade_Num;
+    private Integer App_Grade_Num;
 
     @Basic
     @Column(name="App_Avg_Grade")
@@ -24,7 +24,7 @@ public class App_Gr {
 
     @Basic
     @Column(name="App_Grade_Num")
-    public int getApp_Grade_Num(){return App_Grade_Num;}
-    public void setApp_Grade_Num(int app_Grade_Num){this.App_Grade_Num=app_Grade_Num;}
+    public Integer getApp_Grade_Num(){return App_Grade_Num;}
+    public void setApp_Grade_Num(Integer app_Grade_Num){this.App_Grade_Num=app_Grade_Num;}
 
 }
