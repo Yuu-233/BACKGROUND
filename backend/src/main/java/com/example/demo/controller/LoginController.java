@@ -29,7 +29,7 @@ public class LoginController {
         }
     }
     @RequestMapping(value = "/register")
-    public Message register(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("email") String email, @RequestParam("address") String phone) {
+    public Message register(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("email") String email, @RequestParam("phone") String phone) {
         if (userService.register(username, password, email, phone))
         {   return new Message(1, "successful register!", null);}
 

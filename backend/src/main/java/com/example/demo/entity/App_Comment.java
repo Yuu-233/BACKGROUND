@@ -13,5 +13,5 @@ public class App_Comment {
     private App_CommentPK app_commentPK;
 
     private String App_Comm;
-    private int App_Grade;
+    private Integer App_Grade;
 }

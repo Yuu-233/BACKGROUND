@@ -14,7 +14,7 @@ public class Rec_Gr {
       public void setUser_ID(int user_id){this.User_ID=user_id;}
 
       private Float Rec_Avg_Grade;
-      private int Rec_Grade_Num;
+      private Integer Rec_Grade_Num;
 
       @Basic
       @Column(name="Rec_Avg_Grade")
@@ -23,7 +23,7 @@ public class Rec_Gr {
 
       @Basic
       @Column(name="Rec_Grade_Num")
-      public int getRec_Grade_Num(){return Rec_Grade_Num;}
-      public void setRec_Grade_Num(int rec_Grade_Num){this.Rec_Grade_Num=rec_Grade_Num;}
+      public Integer getRec_Grade_Num(){return Rec_Grade_Num;}
+      public void setRec_Grade_Num(Integer rec_Grade_Num){this.Rec_Grade_Num=rec_Grade_Num;}
 
 }

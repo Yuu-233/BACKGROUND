@@ -11,5 +11,5 @@ import javax.persistence.*;
 public class Apply_Info {
     @EmbeddedId
     private Apply_InfoPK apply_infoPK;
-    private int Accepted;
+    private Integer Accepted;
 }
