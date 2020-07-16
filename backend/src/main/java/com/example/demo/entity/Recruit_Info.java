@@ -14,14 +14,14 @@ public class Recruit_Info {
         public void setRec_ID(int rec_ID){this.Rec_ID=rec_ID;}
 
 
-        private int User_ID;
+        private Integer User_ID;
         private String Rec_Salary;
         private String Rec_Location;
         private String Rec_TimeSchedule;
         private String Rec_Title;
         private String Rec_Cate;
-        private int Rec_Enrolled;
-        private int Rec_Quota;
+        private Integer Rec_Enrolled;
+        private Integer Rec_Quota;
         private String Rec_Desc;
         private String Rec_Experience;
         private String Rec_Education;
@@ -29,8 +29,8 @@ public class Recruit_Info {
 
         @Basic
         @Column(name="User_ID")
-        public int getUser_ID(){return User_ID;}
-        public void setUser_ID(int user_ID){this.User_ID=user_ID;}
+        public Integer getUser_ID(){return User_ID;}
+        public void setUser_ID(Integer user_ID){this.User_ID=user_ID;}
 
         @Basic
         @Column(name="Rec_salary")
@@ -59,13 +59,13 @@ public class Recruit_Info {
 
         @Basic
         @Column(name="Rec_Enrolled")
-        public int getRec_Enrolled(){return Rec_Enrolled;}
-        public void setRec_Enrolled(int rec_Enrolled){this.Rec_Enrolled=rec_Enrolled;}
+        public Integer getRec_Enrolled(){return Rec_Enrolled;}
+        public void setRec_Enrolled(Integer rec_Enrolled){this.Rec_Enrolled=rec_Enrolled;}
 
         @Basic
         @Column(name="Rec_Quota")
-        public int getRec_Quota(){return Rec_Quota;}
-        public void setRec_Quota(int rec_Quota){this.Rec_Quota = rec_Quota;}
+        public Integer getRec_Quota(){return Rec_Quota;}
+        public void setRec_Quota(Integer rec_Quota){this.Rec_Quota = rec_Quota;}
 
         @Basic
         @Column(name="Rec_Desc")
