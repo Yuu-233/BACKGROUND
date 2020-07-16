@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.demo.service.RecService;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class RecController {
 
