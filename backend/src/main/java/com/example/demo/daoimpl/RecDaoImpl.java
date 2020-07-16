@@ -39,13 +39,6 @@ public class RecDaoImpl implements RecDao {
            if(experience == null) experience="";
            if(education == null) education = "";
 
-           System.out.println(lowsalary);
-        System.out.println(highsalary);
-        System.out.println(cate);
-        System.out.println(title);
-        System.out.println(experience);
-        System.out.println(education);
-
         return recRepository.filt_jobs(lowsalary,highsalary,cate,location,title,experience,education);
     }
 }

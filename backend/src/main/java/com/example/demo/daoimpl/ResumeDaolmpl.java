@@ -40,6 +40,8 @@ public class ResumeDaolmpl implements ResumeDao {
              lowsalary = splitSalary[0];
              highsalary = splitSalary[splitSalary.length - 1];
          }*/  //Resume中未设置期望薪酬
+         if(experience==null) experience="";
+         if(education==null) education="";
          return resumeRepository.filt_applicants(experience,education);
      }
 }
