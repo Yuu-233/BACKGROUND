@@ -31,6 +31,14 @@ public class User {
 
     }
 
+    public User(Integer userid,String username, String password, String email, Boolean role,  String phone) {
+        this.User_ID=userid;
+        this.User_Name = username;
+        this.Password = password;
+        this.Email = email;
+        this.Role = role;
+        this.Phone = phone;
+    }
 
     @Basic
     @Column(name="User_Name")

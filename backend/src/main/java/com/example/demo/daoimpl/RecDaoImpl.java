@@ -38,7 +38,9 @@ public class RecDaoImpl implements RecDao {
            if(title == null) title="";
            if(experience == null) experience="";
            if(education == null) education = "";
-
-        return recRepository.filt_jobs(lowsalary,highsalary,cate,location,title,experience,education);
+        if(salary==null)
+        return recRepository.filt_jobs_without_salary(cate,location,title,experience,education);
+        else
+         return recRepository.filt_jobs(lowsalary,highsalary,cate,location,title,experience,education);
     }
 }

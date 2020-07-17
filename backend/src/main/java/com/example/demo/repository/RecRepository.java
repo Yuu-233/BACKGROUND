@@ -15,4 +15,9 @@ public interface RecRepository extends JpaRepository<Recruit_Info,Integer> {
             " and Rec_Cate like CONCAT('%',?3,'%') and Rec_Location like CONCAT('%',?4,'%') and Rec_Title like CONCAT('%',?5,'%')" +
             " and Rec_Experience like CONCAT('%',?6,'%') and Rec_education like CONCAT('%',?7,'%')",nativeQuery = true)
     List<Recruit_Info> filt_jobs(String lowsalary,String highsalary,String cate,String location,String title,String experience,String education);
+
+    @Query(value="select * from recruit_info where" +
+            "  Rec_Cate like CONCAT('%',?1,'%') and Rec_Location like CONCAT('%',?2,'%') and Rec_Title like CONCAT('%',?3,'%')" +
+            " and Rec_Experience like CONCAT('%',?4,'%') and Rec_education like CONCAT('%',?5,'%')",nativeQuery = true)
+    List<Recruit_Info> filt_jobs_without_salary(String cate,String location,String title,String experience,String education);
 }
