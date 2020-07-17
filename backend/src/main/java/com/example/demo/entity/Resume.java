@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,6 +20,24 @@ public class Resume {
     private String Birth;
     private String Experience;
     private String Education;
+    public Resume(){}
+
+    public Resume(Integer user_ID, String name, Boolean gender,String birth,String experience,String education){
+        this.User_ID=user_ID;
+        this.Name=name;
+        this.Gender=gender;
+        this.Birth = birth;
+        this.Experience = experience;
+        this.Education = education;
+    }
+
+    public Resume( String name, Boolean gender,String birth,String experience,String education){
+        this.Name=name;
+        this.Gender=gender;
+        this.Birth = birth;
+        this.Experience = experience;
+        this.Education = education;
+    }
 
     @Basic
     @Column(name="Name")
