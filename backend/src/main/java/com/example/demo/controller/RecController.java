@@ -37,17 +37,17 @@ public class RecController {
 
     @CrossOrigin
     @RequestMapping("/update_rec")
-    public void update_rec(@RequestParam(value="recruit_info") int rec_ID,
-                           @RequestParam(value="recruit_info") Integer user_ID,
-                           @RequestParam(value="recruit_info") String rec_Salary,
-                           @RequestParam(value="recruit_info") String rec_Location,
-                           @RequestParam(value="recruit_info") String rec_TimeSchedule,
-                           @RequestParam(value="recruit_info") String rec_Title,
-                           @RequestParam(value="recruit_info") String rec_Cate,
-                           @RequestParam(value="recruit_info") Integer rec_Enrolled,
-                           @RequestParam(value="recruit_info") Integer rec_Quota,
-                           @RequestParam(value="recruit_info") String rec_Desc,
-                           @RequestParam(value="recruit_info") String rec_Experience,
-                           @RequestParam(value="recruit_info") String rec_Education)
+    public void update_rec(@RequestParam(value="rec_ID") int rec_ID,
+                           @RequestParam(value="user_ID") Integer user_ID,
+                           @RequestParam(value="rec_Salary") String rec_Salary,
+                           @RequestParam(value="rec_Location") String rec_Location,
+                           @RequestParam(value="rec_TimeSchedule") String rec_TimeSchedule,
+                           @RequestParam(value="rec_Title") String rec_Title,
+                           @RequestParam(value="rec_Cate") String rec_Cate,
+                           @RequestParam(value="rec_Enrolled") Integer rec_Enrolled,
+                           @RequestParam(value="rec_Quota") Integer rec_Quota,
+                           @RequestParam(value="rec_Desc") String rec_Desc,
+                           @RequestParam(value="rec_Experience") String rec_Experience,
+                           @RequestParam(value="rec_Education") String rec_Education)
     { recService.update_rec(rec_ID, user_ID,rec_Salary,rec_Location,rec_TimeSchedule,rec_Title,rec_Cate,rec_Enrolled,rec_Quota,rec_Desc, rec_Experience,rec_Education);}
 }
