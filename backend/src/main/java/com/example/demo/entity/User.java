@@ -18,11 +18,11 @@ public class User {
     private String Password;
     private String Phone;
     private String Email;
-    private Boolean Role;
+    private int Role;
 
     public User() {}
 
-    public User(String username, String password, String email, Boolean role,  String phone) {
+    public User(String username, String password, String email, int role,  String phone) {
         this.User_Name = username;
         this.Password = password;
         this.Email = email;
@@ -31,7 +31,7 @@ public class User {
 
     }
 
-    public User(Integer userid,String username, String password, String email, Boolean role,  String phone) {
+    public User(Integer userid,String username, String password, String email, int role,  String phone) {
         this.User_ID=userid;
         this.User_Name = username;
         this.Password = password;
@@ -62,7 +62,7 @@ public class User {
 
     @Basic
     @Column(name="Role")
-    public Boolean getRole(){return Role;}
-    public void  setRole(Boolean role){this.Role = role;}
+    public int getRole(){return Role;}
+    public void  setRole(int role){this.Role = role;}
 
 }

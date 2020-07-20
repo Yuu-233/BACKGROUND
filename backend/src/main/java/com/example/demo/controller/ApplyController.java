@@ -23,8 +23,18 @@ public class ApplyController {
     }
 
     @CrossOrigin
+
     @RequestMapping("/getAppbyId")
     public List<Object> getAppbyId(@RequestParam("userid")Integer userid){return applyService.getAppbyId(userid);}
 
+    @RequestMapping("/delete_apply_info")
+    public void delete_apply_info(@RequestParam("user_id")Integer user_id,@RequestParam("rec_id")Integer rec_id){
+        applyService.delete_apply_info(user_id,rec_id);
+    }
+    @CrossOrigin
+    @RequestMapping("/update_apply_info")
+    public void update_apply_info(@RequestParam("user_id")Integer user_id,@RequestParam("rec_id")Integer rec_id, @RequestParam("accepted")Integer accepted){
+        applyService.update_apply_info(user_id,rec_id,accepted);
+    }
 
 }

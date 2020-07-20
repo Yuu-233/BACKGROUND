@@ -4,6 +4,7 @@ import com.example.demo.entity.Recruit_Info;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -25,10 +26,18 @@ public interface RecRepository extends JpaRepository<Recruit_Info,Integer> {
 
     @Transactional
     @Modifying
-    @Query(value="insert into recruit_info(User_ID,Rec_salary,Rec_Location,Rec_Title,Rec_Cate,Rec_Enrolled,Rec_Quota,Rec_Desc,Rec_Experience,Rec_Education) " +
-                                  " values(?1,?2,?3,?4,?5,0,?6,?7,?8,?9)",nativeQuery = true)
-    void create_job(Integer userid,String salary,String location,String title,String cate,Integer quota,String desc,String exp,String edu);
+    @Query(value="insert into recruit_info(User_ID,Rec_salary,Rec_Location,Rec_TimeSchedule,Rec_Title,Rec_Cate,Rec_Enrolled,Rec_Quota,Rec_Desc,Rec_Experience,Rec_Education) " +
+                                  " values(?1,?2,?3,?4,?5,?6,0,?7,?8,?9,?10)",nativeQuery = true)
+    void create_job(Integer userid,String salary,String location,String schedule,String title,String cate,Integer quota,String desc,String exp,String edu);
 
     @Query(value="select * from Recruit_Info where User_ID = ?",nativeQuery = true)
     List<Recruit_Info> getRecbyId(Integer userid);
+
+    @Modifying
+    @Query("delete from Recruit_Info b where b.Rec_ID=:rec_id")
+    void deleteByRec_ID(@Param("rec_id") int rec_id);
+    @Modifying
+    @Query("select b from Recruit_Info b where b.Rec_ID=:rec_id")
+    Recruit_Info findByRec_ID(@Param("rec_id") int rec_id);
+
 }

@@ -29,11 +29,12 @@ public class RecController {
                                        )
     {return recService.filt_jobs(salary,cate,location,title,experience,education);}
 
+
     @CrossOrigin
     @RequestMapping("/create_job")
-    public void publish_job(@RequestParam("userid")Integer userid,@RequestParam("salary")String salary,@RequestParam("location")String location,@RequestParam("title")String title,
+    public void create_job(@RequestParam("userid")Integer userid,@RequestParam("salary")String salary,@RequestParam("location")String location,@RequestParam("schedule")String schedule,@RequestParam("title")String title,
                             @RequestParam("cate")String cate,@RequestParam("quota")Integer quota,@RequestParam("desc")String desc,@RequestParam("exp")String exp,@RequestParam("edu")String edu){
-        recService.create_job(userid,salary,location,title,cate,quota,desc,exp,edu);
+        recService.create_job(userid,salary,location,schedule,title,cate,quota,desc,exp,edu);
     }
 
     @CrossOrigin
@@ -41,6 +42,29 @@ public class RecController {
     public List<Recruit_Info> getRecbyId(@RequestParam("userid")Integer userid){
         return recService.getRecbyId(userid);
     }
+
+    //Admin function
+    @CrossOrigin
+    @RequestMapping("/delete_rec")
+    public void delete_rec(@RequestParam(value="rec_id") int rec_id)
+    { recService.delete_rec(rec_id);}
+
+    @CrossOrigin
+    @RequestMapping("/update_rec")
+    public void update_rec(@RequestParam(value="recruit_info") int rec_ID,
+                           @RequestParam(value="recruit_info") Integer user_ID,
+                           @RequestParam(value="recruit_info") String rec_Salary,
+                           @RequestParam(value="recruit_info") String rec_Location,
+                           @RequestParam(value="recruit_info") String rec_TimeSchedule,
+                           @RequestParam(value="recruit_info") String rec_Title,
+                           @RequestParam(value="recruit_info") String rec_Cate,
+                           @RequestParam(value="recruit_info") Integer rec_Enrolled,
+                           @RequestParam(value="recruit_info") Integer rec_Quota,
+                           @RequestParam(value="recruit_info") String rec_Desc,
+                           @RequestParam(value="recruit_info") String rec_Experience,
+                           @RequestParam(value="recruit_info") String rec_Education)
+    { recService.update_rec(rec_ID, user_ID,rec_Salary,rec_Location,rec_TimeSchedule,rec_Title,rec_Cate,rec_Enrolled,rec_Quota,rec_Desc, rec_Experience,rec_Education);}
+
 }
 
 

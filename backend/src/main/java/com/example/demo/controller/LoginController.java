@@ -22,7 +22,7 @@ public class LoginController {
         if(user == null){
             return new Message(0,"error username or password",null);
         }else{
-            if(user.getRole()){//admin
+            if(user.getRole()==1){//admin
                 return new Message(2,"successful login admin!",user);
             }
            //common user

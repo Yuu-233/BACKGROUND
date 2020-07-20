@@ -33,4 +33,13 @@ public class UserDaoImpl implements UserDao {
         if(user==null)
         userRepository.alter_user_info(userid,username,password,phone,email,role);
     }
+    @Override
+    public void change_state(int userid){
+        User u = userRepository.getUserbyId(userid);
+        if (u.getRole()==0)
+            u.setRole(2);
+        if(u.getRole()==2)
+            u.setRole(0);
+        userRepository.save(u);
+    }
 }

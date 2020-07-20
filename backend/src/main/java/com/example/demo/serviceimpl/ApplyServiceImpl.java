@@ -15,5 +15,14 @@ public class ApplyServiceImpl implements ApplyService {
     public void add_apply_info(Integer user_id,Integer rec_id){
         applyDao.add_apply_info(user_id,rec_id);
     }
+
     public List<Object> getAppbyId(Integer userid){return applyDao.getAppbyId(userid);}
+
+    public void delete_apply_info(Integer user_id,Integer rec_id){
+        applyDao.delete_apply_info(user_id,rec_id);
+    }
+    public void update_apply_info(Integer user_id,Integer rec_id, Integer accepted){
+        applyDao.update_apply_info(user_id,rec_id, accepted);
+    }
+
 }

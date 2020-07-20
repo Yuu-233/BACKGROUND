@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
         if(user==null)
         {
             //        System.out.println("555555");
-            user = new User(username, password, email, false, phone);//common user registration
+            user = new User(username, password, email, 0, phone);//common user registration
             userDao.save(user);
             return true;
         }
@@ -38,6 +38,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void alter_user_info(Integer userid,String username,String password,String phone,String email,Boolean role){
         userDao.alter_user_info(userid,username,password,phone,email,role);
+    }
+    @Override
+    public void change_state(int userid){
+        userDao.change_state(userid);
     }
 
 }

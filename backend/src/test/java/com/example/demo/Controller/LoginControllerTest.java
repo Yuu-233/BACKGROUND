@@ -53,7 +53,7 @@ public class LoginControllerTest extends DemoApplicationTests {
 
     @Test
     public void getUserbyId()throws Exception{
-        User user = new User(1,"testusername","testpassword","testemail",false,"testphone");
+        User user = new User(1,"testusername","testpassword","testemail",0,"testphone");
         when(userController.getUserbyId(1)).thenReturn(user);
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/UserController/getUserbyId/1").accept(MediaType.APPLICATION_JSON)).
                 andExpect(status().isOk()).andExpect(MockMvcResultMatchers.jsonPath("$.user_ID").value(1)).andReturn();
