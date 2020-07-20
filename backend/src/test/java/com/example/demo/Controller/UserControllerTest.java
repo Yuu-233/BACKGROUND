@@ -2,12 +2,14 @@ package com.example.demo.Controller;
 
 import com.example.demo.DemoApplicationTests;
 import com.example.demo.controller.UserController;
+import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.StatusAssertions;
@@ -19,6 +21,8 @@ import org.springframework.web.context.WebApplicationContext;
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 import java.awt.*;
 
 @RunWith(SpringRunner.class)
@@ -34,7 +38,8 @@ public class UserControllerTest extends DemoApplicationTests {
     @Autowired
     private WebApplicationContext context;
 
-    @Autowired
+    //@Autowired
+    @MockBean
     private UserService userService;
 
     @Autowired
@@ -42,7 +47,8 @@ public class UserControllerTest extends DemoApplicationTests {
 
     @Test
     public void getUserbyId() throws Exception{
-      MvcResult result= mockmvc.perform(MockMvcRequestBuilders.get("/getUserbyId").accept(MediaType.APPLICATION_JSON))
+
+      MvcResult result= mockmvc.perform(MockMvcRequestBuilders.get("/getUserbyId/1").accept(MediaType.APPLICATION_JSON))
            .andExpect(status().isOk()).andReturn();
     }
 }

@@ -28,4 +28,19 @@ public class RecController {
                                         @RequestParam(value="education",required = false)String education
                                        )
     {return recService.filt_jobs(salary,cate,location,title,experience,education);}
+
+    @CrossOrigin
+    @RequestMapping("/create_job")
+    public void publish_job(@RequestParam("userid")Integer userid,@RequestParam("salary")String salary,@RequestParam("location")String location,@RequestParam("title")String title,
+                            @RequestParam("cate")String cate,@RequestParam("quota")Integer quota,@RequestParam("desc")String desc,@RequestParam("exp")String exp,@RequestParam("edu")String edu){
+        recService.create_job(userid,salary,location,title,cate,quota,desc,exp,edu);
+    }
+
+    @CrossOrigin
+    @RequestMapping("/getRecbyId")
+    public List<Recruit_Info> getRecbyId(@RequestParam("userid")Integer userid){
+        return recService.getRecbyId(userid);
+    }
 }
+
+

@@ -43,4 +43,10 @@ public class RecDaoImpl implements RecDao {
         else
          return recRepository.filt_jobs(lowsalary,highsalary,cate,location,title,experience,education);
     }
+    public void create_job(Integer userid,String salary,String location,String title,String cate,Integer quota,String desc,String exp,String edu){
+        recRepository.create_job(userid,salary,location,title,cate,quota,desc,exp,edu);}
+
+    public List<Recruit_Info> getRecbyId(Integer userid){return recRepository.getRecbyId(userid);}
+
+
 }
