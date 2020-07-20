@@ -28,4 +28,26 @@ public class RecController {
                                         @RequestParam(value="education",required = false)String education
                                        )
     {return recService.filt_jobs(salary,cate,location,title,experience,education);}
+
+    //Admin function
+    @CrossOrigin
+    @RequestMapping("/delete_rec")
+    public void delete_rec(@RequestParam(value="rec_id") int rec_id)
+    { recService.delete_rec(rec_id);}
+
+    @CrossOrigin
+    @RequestMapping("/update_rec")
+    public void update_rec(@RequestParam(value="recruit_info") int rec_ID,
+                           @RequestParam(value="recruit_info") Integer user_ID,
+                           @RequestParam(value="recruit_info") String rec_Salary,
+                           @RequestParam(value="recruit_info") String rec_Location,
+                           @RequestParam(value="recruit_info") String rec_TimeSchedule,
+                           @RequestParam(value="recruit_info") String rec_Title,
+                           @RequestParam(value="recruit_info") String rec_Cate,
+                           @RequestParam(value="recruit_info") Integer rec_Enrolled,
+                           @RequestParam(value="recruit_info") Integer rec_Quota,
+                           @RequestParam(value="recruit_info") String rec_Desc,
+                           @RequestParam(value="recruit_info") String rec_Experience,
+                           @RequestParam(value="recruit_info") String rec_Education)
+    { recService.update_rec(rec_ID, user_ID,rec_Salary,rec_Location,rec_TimeSchedule,rec_Title,rec_Cate,rec_Enrolled,rec_Quota,rec_Desc, rec_Experience,rec_Education);}
 }

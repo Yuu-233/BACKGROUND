@@ -1,6 +1,6 @@
 package com.example.demo.entity;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
+//import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.Data;
 
 import javax.persistence.*;

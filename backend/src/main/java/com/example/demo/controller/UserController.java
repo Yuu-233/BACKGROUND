@@ -26,4 +26,10 @@ public class UserController {
         userService.alter_user_info(userid,username,password,phone,email,role);
     }
 
+    //Admin function
+    @CrossOrigin
+    @RequestMapping("/change_state")
+    public void change_state(@RequestParam("userid")int userid){
+        userService.change_state(userid);
+    }
 }

@@ -3,7 +3,7 @@ package com.example.demo.serviceimpl;
 import com.example.demo.dao.ResumeDao;
 import com.example.demo.entity.Resume;
 import com.example.demo.service.ResumeService;
-import com.sun.org.apache.xpath.internal.operations.Bool;
+//import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
