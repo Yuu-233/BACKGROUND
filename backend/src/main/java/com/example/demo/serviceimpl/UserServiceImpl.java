@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
         if(user==null)
         {
             //        System.out.println("555555");
-            user = new User(username, password, email, false, phone);//common user registration
+            user = new User(username, password, email, 0, phone);//common user registration
             userDao.save(user);
             return true;
         }
