@@ -39,5 +39,9 @@ public class UserServiceImpl implements UserService {
     public void alter_user_info(Integer userid,String username,String password,String phone,String email,Boolean role){
         userDao.alter_user_info(userid,username,password,phone,email,role);
     }
+    @Override
+    public void change_state(int userid){
+        userDao.change_state(userid);
+    }
 
 }

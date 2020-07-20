@@ -30,12 +30,12 @@ public class UserServiceTest extends DemoApplicationTests {
 
     @Test
     public void getUserById(){
-        Integer userId=1234;
+        /*Integer userId=1234;
         User user = new User("testusername","testpassword","testemail",false,"testphone");
         when(userRepository.getUserbyId(userId)).thenReturn(user);
-        assertEquals(user,userService.getUserbyId(userId)); //mock模式
+        assertEquals(user,userService.getUserbyId(userId)); *///mock模式
 
-        /*User user= new User(1, "Tiffani Anstice", "2152fyrx", "5897311806@564.com",  true,"07401238030");
+        User user= new User(1, "Tiffani Anstice", "2152fyrx", "5897311806@564.com",  true,"07401238030");
         assertEquals(user,userService.getUserbyId(1));//非mock模式*/
     }
 
