@@ -29,6 +29,20 @@ public class RecController {
                                        )
     {return recService.filt_jobs(salary,cate,location,title,experience,education);}
 
+
+    @CrossOrigin
+    @RequestMapping("/create_job")
+    public void create_job(@RequestParam("userid")Integer userid,@RequestParam("salary")String salary,@RequestParam("location")String location,@RequestParam("schedule")String schedule,@RequestParam("title")String title,
+                            @RequestParam("cate")String cate,@RequestParam("quota")Integer quota,@RequestParam("desc")String desc,@RequestParam("exp")String exp,@RequestParam("edu")String edu){
+        recService.create_job(userid,salary,location,schedule,title,cate,quota,desc,exp,edu);
+    }
+
+    @CrossOrigin
+    @RequestMapping("/getRecbyId")
+    public List<Recruit_Info> getRecbyId(@RequestParam("userid")Integer userid){
+        return recService.getRecbyId(userid);
+    }
+
     //Admin function
     @CrossOrigin
     @RequestMapping("/delete_rec")
@@ -50,4 +64,7 @@ public class RecController {
                            @RequestParam(value="rec_Experience") String rec_Experience,
                            @RequestParam(value="rec_Education") String rec_Education)
     { recService.update_rec(rec_ID, user_ID,rec_Salary,rec_Location,rec_TimeSchedule,rec_Title,rec_Cate,rec_Enrolled,rec_Quota,rec_Desc, rec_Experience,rec_Education);}
+
 }
+
+

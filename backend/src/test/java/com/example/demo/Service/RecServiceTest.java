@@ -34,13 +34,13 @@ public class RecServiceTest extends DemoApplicationTests {
 
     @Test
     public void get_jobs(){
-        /*List<Recruit_Info> info = new LinkedList<>();
+        List<Recruit_Info> info = new LinkedList<>();
         info.add(new Recruit_Info(1,null,"3000-5000","上海",null,"test","test",null,null,null,"不限","不限"));
         info.add(new Recruit_Info(2,null,"3000-5000","北京",null,"test","test",null,null,null,"不限","不限"));
         when(recRepository.get_jobs()).thenReturn(info);
         assertEquals(info,recService.get_jobs());
         assertEquals(2,recService.get_jobs().size());
-        */
+
         /*Integer job_count = 1215;
         assertEquals(job_count,recService.get_jobs().size());*/ //非mock
     }

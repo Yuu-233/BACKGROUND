@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
 //@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class ApplyController {
@@ -20,6 +23,10 @@ public class ApplyController {
     }
 
     @CrossOrigin
+
+    @RequestMapping("/getAppbyId")
+    public List<Object> getAppbyId(@RequestParam("userid")Integer userid){return applyService.getAppbyId(userid);}
+
     @RequestMapping("/delete_apply_info")
     public void delete_apply_info(@RequestParam("user_id")Integer user_id,@RequestParam("rec_id")Integer rec_id){
         applyService.delete_apply_info(user_id,rec_id);
