@@ -26,7 +26,7 @@ public interface RecRepository extends JpaRepository<Recruit_Info,Integer> {
 
     @Transactional
     @Modifying
-    @Query(value="insert into recruit_info(User_ID,Rec_salary,Rec_Location,Rec_TimeSchedule,Rec_Title,Rec_Cate,Rec_Quota,Rec_Desc,Rec_Experience,Rec_Education) " +
+    @Query(value="insert into recruit_info(User_ID,Rec_salary,Rec_Location,Rec_TimeSchedule,Rec_Title,Rec_Cate,Rec_Enrolled,Rec_Quota,Rec_Desc,Rec_Experience,Rec_Education) " +
                                   " values(?1,?2,?3,?4,?5,?6,0,?7,?8,?9,?10)",nativeQuery = true)
     void create_job(Integer userid,String salary,String location,String schedule,String title,String cate,Integer quota,String desc,String exp,String edu);
 
