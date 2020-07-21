@@ -12,4 +12,6 @@ public class Apply_Info {
     @EmbeddedId
     private Apply_InfoPK apply_infoPK;
     private Integer Accepted;
+
+
 }

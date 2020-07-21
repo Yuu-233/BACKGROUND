@@ -1,11 +1,17 @@
 package com.example.demo.Controller;
 
+
 import com.example.demo.DemoApplicationTests;
 import com.example.demo.controller.UserController;
+<<<<<<< HEAD
+=======
+import com.example.demo.entity.User;
+>>>>>>> 12266cd58bcffe1a72027ca4a641cb69f9725c72
 import com.example.demo.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
+<<<<<<< HEAD
 import org.junit.jupiter.api.AfterEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -17,10 +23,34 @@ import org.springframework.web.context.WebApplicationContext;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+=======
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import java.awt.*;
 
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@AutoConfigureMockMvc
 public class LoginControllerTest extends DemoApplicationTests {
     @Test
     public void contextLoads(){}
+
 
     private MockMvc mockMvc;//模拟网络请求
 
@@ -49,8 +79,9 @@ public class LoginControllerTest extends DemoApplicationTests {
     }
 
     @Test
-    public void register() throws Exception{
-        MvcResult result = mockMvc.perform(get("/register?username=Aurora Gimlet&password=789wersdff&email=2427328967@177.com&phone=76796318788").contentType(MediaType.APPLICATION_JSON_VALUE))
+    public void register() throws Exception {
+        MvcResult result1 = mockMvc.perform(get("/register?username=Aurora Gimlet&password=789wersdff&email=2427328967@177.com&phone=76796318788").contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk()).andExpect(jsonPath("$.status").value(1)).andReturn();
     }
+
 }

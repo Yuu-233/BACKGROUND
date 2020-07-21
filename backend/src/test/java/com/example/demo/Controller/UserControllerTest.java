@@ -16,6 +16,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -29,10 +30,17 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import static org.hamcrest.Matchers.equalTo;
+<<<<<<< HEAD
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+=======
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
+>>>>>>> 12266cd58bcffe1a72027ca4a641cb69f9725c72
 import java.awt.*;
 import java.io.IOException;
 import java.util.List;
@@ -42,23 +50,6 @@ import java.util.List;
 @AutoConfigureMockMvc
 @WebAppConfiguration
 public class UserControllerTest extends DemoApplicationTests {
-//    protected MockMvc mvc;
-//    @Autowired
-//    WebApplicationContext webApplicationContext;
-//
-//    protected void setUp() {
-//        mvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-//    }
-//    protected String mapToJson(Object obj) throws JsonProcessingException {
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        return objectMapper.writeValueAsString(obj);
-//    }
-//    protected <T> T mapFromJson(String json, Class<T> clazz)
-//            throws JsonParseException, JsonMappingException, IOException {
-//
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        return objectMapper.readValue(json, clazz);
-//    }
 
     @Test
     public void contextLoads(){}
@@ -68,7 +59,8 @@ public class UserControllerTest extends DemoApplicationTests {
     @Autowired
     private WebApplicationContext context;
 
-    @Autowired
+    //@Autowired
+    @MockBean
     private UserService userService;
 
     @Autowired
@@ -85,11 +77,6 @@ public class UserControllerTest extends DemoApplicationTests {
     }
     @Test
     public void getUserbyId() throws Exception{
-//      MvcResult result= mockMvc.perform(MockMvcRequestBuilders.get("/getUserbyId?userid=4")
-//              .accept(MediaType.APPLICATION_JSON))
-//              .andExpect(status().isOk())
-//              .andExpect(jsonPath("$.User_Name").value("Lina Gimlet"))
-//              .andReturn();
 
         MvcResult result1 = mockMvc.perform(get("/change_state?userid=20")
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
@@ -106,24 +93,6 @@ public class UserControllerTest extends DemoApplicationTests {
         String resultContent = result.getResponse().getContentAsString();
         User user = om.readValue(resultContent, new TypeReference<User>() {});
         assertEquals(userService.getUserbyId(4), user);
-//        this.mockMvc.perform(MockMvcRequestBuilders.get("/getUserbyId").param("userid", "4"))
-//                .andExpect(MockMvcResultMatchers.status().isOk())
-//                .andExpect(jsonPath("$.User_Name").value("Lina Gimlet")).andReturn();
 
-        //        User u = new User(1500, "testname","testpassword", "testemail")
-
-
-//        mockMvc.perform( MockMvcRequestBuilders
-//                .get("/getUserbyId/{userid}", 4)
-//                .accept(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk())
-//                .andExpect(MockMvcResultMatchers.jsonPath("$.User_Name")
-//                        .value("Lina Gimlet"));
-
-//        mockMvc.perform( MockMvcRequestBuilders
-//                .get("/getUserbyId?userid", 4)
-//                .accept(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk())
-//                .andExpect(MockMvcResultMatchers.jsonPath("$.User_Name").value("Lina Gimlet"));
     }
 }

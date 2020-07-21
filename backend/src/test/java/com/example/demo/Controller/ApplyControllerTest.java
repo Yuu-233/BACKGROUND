@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.DemoApplicationTests;
+
 import com.example.demo.controller.UserController;
 import com.example.demo.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,6 +18,16 @@ import org.springframework.web.context.WebApplicationContext;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@AutoConfigureMockMvc
 public class ApplyControllerTest extends DemoApplicationTests {
     @Test
     public void contextLoads(){}
@@ -63,6 +74,4 @@ public void update_apply_info() throws Exception{
             .andExpect(status().isOk())
             .andReturn();
 }
-
-
 }

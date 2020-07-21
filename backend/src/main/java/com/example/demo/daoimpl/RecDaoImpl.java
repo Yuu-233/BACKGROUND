@@ -43,6 +43,12 @@ public class RecDaoImpl implements RecDao {
         else
          return recRepository.filt_jobs(lowsalary,highsalary,cate,location,title,experience,education);
     }
+
+    public void create_job(Integer userid,String salary,String location,String schedule,String title,String cate,Integer quota,String desc,String exp,String edu){
+        recRepository.create_job(userid,salary,location,schedule,title,cate,quota,desc,exp,edu);}
+
+    public List<Recruit_Info> getRecbyId(Integer userid){return recRepository.getRecbyId(userid);}
+
     public void delete_rec(int rec_id){
         recRepository.deleteByRec_ID(rec_id);
     }
@@ -61,4 +67,5 @@ public class RecDaoImpl implements RecDao {
         recRepository.save(r);
 
     }
+
 }
