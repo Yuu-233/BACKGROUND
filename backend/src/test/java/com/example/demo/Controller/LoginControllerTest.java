@@ -41,11 +41,6 @@ public class LoginControllerTest extends DemoApplicationTests {
     @Autowired
     private WebApplicationContext context;
 
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private UserController userController;
 
     private ObjectMapper om = new ObjectMapper();
     @Before

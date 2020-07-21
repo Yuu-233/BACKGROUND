@@ -37,12 +37,6 @@ public class ApplyControllerTest extends DemoApplicationTests {
     @Autowired
     private WebApplicationContext context;
 
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private UserController userController;
-
     private ObjectMapper om = new ObjectMapper();
     @Before
     public void setUp() {

@@ -50,8 +50,6 @@ public class UserControllerTest extends DemoApplicationTests {
     @MockBean
     private UserService userService;
 
-    @Autowired
-    private UserController userController;
 
     private ObjectMapper om = new ObjectMapper();
     @Before
