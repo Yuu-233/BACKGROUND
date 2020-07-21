@@ -22,7 +22,7 @@ public class UserController {
 
     @CrossOrigin
     @RequestMapping("/alter_user_info")
-    public void alter_user_info(@RequestParam("userid") Integer userid,@RequestParam("username")String username,@RequestParam("password") String password,@RequestParam("phone") String phone,@RequestParam("email") String email,@RequestParam("role") Boolean role){
+    public void alter_user_info(@RequestParam("userid") Integer userid,@RequestParam("username")String username,@RequestParam("password") String password,@RequestParam("phone") String phone,@RequestParam("email") String email,@RequestParam("role") int role){
         userService.alter_user_info(userid,username,password,phone,email,role);
     }
 

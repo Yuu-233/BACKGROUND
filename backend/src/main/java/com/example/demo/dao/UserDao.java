@@ -8,6 +8,6 @@ public interface UserDao {
     User findUserByUsername (String username);
     void save (User user);
     User getUserbyId(Integer userid);
-    void alter_user_info(Integer userid,String username,String password,String phone,String email,Boolean role);
+    void alter_user_info(Integer userid,String username,String password,String phone,String email,int role);
     void change_state(int userid);
 }
