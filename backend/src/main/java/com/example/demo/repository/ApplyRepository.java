@@ -17,12 +17,12 @@ public interface ApplyRepository extends JpaRepository<Apply_Info, Apply_InfoPK>
 
     @Transactional
     @Modifying
-    @Query(value="delete from Apply_info(User_ID,Rec_ID,Accepted) b where b.User_ID =: user_id and b.Rec_ID =: rec_id", nativeQuery = true)
+    @Query(value="delete from apply_info where User_ID=?1 and Rec_ID=?2", nativeQuery = true )
     public void delete_apply_info(Integer user_id,Integer rec_id);
 
     @Transactional
     @Modifying
-    @Query(value="update apply_info(User_ID,Rec_ID,Accepted)  set Accepted=?3 where User_ID =?1 and Rec_ID =?2", nativeQuery = true )
+    @Query(value="update apply_info  set Accepted=?3 where User_ID =?1 and Rec_ID =?2", nativeQuery = true )
     public void update_apply_info(Integer user_id,Integer rec_id,Integer accepted);
 
 

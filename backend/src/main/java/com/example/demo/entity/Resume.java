@@ -59,6 +59,8 @@ public class Resume {
     public String getExperience(){return Experience;}
     public void   setExperience(String experience){this.Experience=experience;}
 
-
-
+    @Basic
+    @Column(name="Education")
+    public String getEducation(){return Education;}
+    public void   setEducation(String education){this.Education=education;}
 }
