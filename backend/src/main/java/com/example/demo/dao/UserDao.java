@@ -10,4 +10,5 @@ public interface UserDao {
     User getUserbyId(Integer userid);
     void alter_user_info(Integer userid,String username,String password,String phone,String email,Boolean role);
     void change_state(int userid);
+    User getUserbyUsername(String username);
 }

@@ -11,4 +11,5 @@ public interface UserService {
     public User getUserbyId(Integer userid);
     public void alter_user_info(Integer userid,String username,String password,String phone,String email,Boolean role);
     public void change_state(int userid);
+    public User getUserbyUsername(String username);
 }
