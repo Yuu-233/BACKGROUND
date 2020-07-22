@@ -27,10 +27,10 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void alter_user_info(Integer userid,String username,String password,String phone,String email,Boolean role)
+    public void alter_user_info(Integer userid,String username,String password,String phone,String email,int role)
     {
         User user=userRepository.findUserByUsername(username);
-        if(user==null)
+        if(user!=null)
         userRepository.alter_user_info(userid,username,password,phone,email,role);
     }
     @Override
@@ -38,7 +38,7 @@ public class UserDaoImpl implements UserDao {
         User u = userRepository.getUserbyId(userid);
         if (u.getRole()==0)
             u.setRole(2);
-        if(u.getRole()==2)
+        else if (u.getRole()==2)
             u.setRole(0);
         userRepository.save(u);
     }

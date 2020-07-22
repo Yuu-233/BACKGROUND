@@ -20,8 +20,7 @@ public class UserServiceImpl implements UserService {
         User user = userDao.findUserByUsername(username);
 //        System.out.println(user.getUsername());
         if(user==null)
-        {
-            //        System.out.println("555555");
+        {  //        System.out.println("555555");
             user = new User(username, password, email, 0, phone);//common user registration
             userDao.save(user);
             return true;
@@ -39,7 +38,7 @@ public class UserServiceImpl implements UserService {
     public User getUserbyUsername(String username){return userDao.getUserbyUsername(username);}
 
     @Override
-    public void alter_user_info(Integer userid,String username,String password,String phone,String email,Boolean role){
+    public void alter_user_info(Integer userid,String username,String password,String phone,String email,int role){
         userDao.alter_user_info(userid,username,password,phone,email,role);
     }
     @Override

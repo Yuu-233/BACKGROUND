@@ -9,6 +9,7 @@ import javax.persistence.*;
 public class Recruit_Info {
         @Id
         @Column(name="Rec_ID")
+        @GeneratedValue(strategy=GenerationType.AUTO)
         private int Rec_ID;
         public int getRec_ID(){return Rec_ID;}
         public void setRec_ID(int rec_ID){this.Rec_ID=rec_ID;}
