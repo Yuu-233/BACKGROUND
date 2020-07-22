@@ -65,7 +65,5 @@ public class RecDaoImpl implements RecDao {
         r.setRec_TimeSchedule(rec_TimeSchedule);
         r.setRec_Title(rec_Title);
         recRepository.save(r);
-
     }
-
 }

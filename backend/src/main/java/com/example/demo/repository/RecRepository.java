@@ -33,10 +33,12 @@ public interface RecRepository extends JpaRepository<Recruit_Info,Integer> {
     @Query(value="select * from Recruit_Info where User_ID = ?",nativeQuery = true)
     List<Recruit_Info> getRecbyId(Integer userid);
 
+    @Transactional
     @Modifying
     @Query("delete from Recruit_Info b where b.Rec_ID=:rec_id")
-    void deleteByRec_ID(@Param("rec_id") int rec_id);
-    @Modifying
+    public void deleteByRec_ID(@Param("rec_id") int rec_id);
+
+
     @Query("select b from Recruit_Info b where b.Rec_ID=:rec_id")
     Recruit_Info findByRec_ID(@Param("rec_id") int rec_id);
 
