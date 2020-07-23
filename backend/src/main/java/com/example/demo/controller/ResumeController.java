@@ -35,4 +35,10 @@ public class ResumeController {
                          @RequestParam(value="education",required = false)String education){
         return resumeService.filt_applicants(experience,education);
     }
+
+    @CrossOrigin
+    @RequestMapping("/getResumebyId")
+    public Resume getResumebyId(@RequestParam("userid")Integer userid){
+        return resumeService.getResumebyId(userid);
+    }
 }

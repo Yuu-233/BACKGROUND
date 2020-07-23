@@ -5,6 +5,7 @@ import com.example.demo.entity.User;
 public class Message {
     private Integer status;
     private String message;
+
     User user;
 
     public Message(){}
