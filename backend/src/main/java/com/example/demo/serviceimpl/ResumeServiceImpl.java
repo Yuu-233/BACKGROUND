@@ -22,5 +22,8 @@ public class ResumeServiceImpl implements ResumeService {
     public List<Resume> filt_applicants(String experience,String education){
         return resumeDao.filt_applicants(experience,education);
     }
+    public Resume getResumebyId(Integer userid){
+        return resumeDao.getResumebyId(userid);
+    }
 
 }

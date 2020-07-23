@@ -43,4 +43,9 @@ public interface RecRepository extends JpaRepository<Recruit_Info,Integer> {
     @Query("select b from Recruit_Info b where b.Rec_ID=:rec_id")
     Recruit_Info findByRec_ID(@Param("rec_id") int rec_id);
 
+    @Transactional
+    @Modifying
+    @Query(value="update Recruit_Info set User_ID = ?2,Rec_Salary = ?3,Rec_Location = ?4,Rec_TimeSchedule = ?5,Rec_Title = ?6, Rec_Cate = ?7,Rec_Enrolled = ?8,Rec_Quota = ?9,Rec_Desc = ?10,Rec_Experience = ?11,Rec_Education = ?12 where Rec_ID = ?1")
+    void update_rec(int rec_ID, Integer user_ID,  String rec_Salary, String rec_Location, String rec_TimeSchedule,String rec_Title, String rec_Cate, Integer rec_Enrolled, Integer rec_Quota, String rec_Desc, String rec_Experience, String rec_Education);
+
 }
