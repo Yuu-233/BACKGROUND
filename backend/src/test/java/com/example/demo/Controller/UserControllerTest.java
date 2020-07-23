@@ -26,9 +26,12 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
@@ -60,24 +63,32 @@ public class UserControllerTest extends DemoApplicationTests {
     @AfterEach
     void tearDown() {
     }
+//    @Test
+//    public void getUserbyId() throws Exception{
+//        MvcResult result = mockMvc.perform(get("/getUserbyId?userid=5"))
+//                .andExpect(status().isOk()).andReturn();
+//        User u = new User(5, "Phyllys Beadnell", "3819ooij", "5004880041@476.com", 2, "01006841651");
+//        String resultContent = result.getResponse().getContentAsString();
+//        User user = om.readValue(resultContent, new TypeReference<User>() {});
+//        assertEquals(u, user);
+//    }
     @Test
-    public void getUserbyId() throws Exception{
+    public void change_state() throws Exception{
 
         MvcResult result1 = mockMvc.perform(get("/change_state?userid=20")
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
              .andReturn();
+        verify(userService, times(1)).change_state(20);
+    }
+
+    @Test
+    public void alter_user_info() throws Exception {
 
         MvcResult result2 = mockMvc.perform(get("/alter_user_info?userid=2&username=Aurora Carding&password=9031ufxb&phone=92114684077&email=4495771966@598.com&role=0")
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
                 .andReturn();
-
-        MvcResult result = mockMvc.perform(get("/getUserbyId?userid=4").contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(status().isOk()).andReturn();
-        String resultContent = result.getResponse().getContentAsString();
-        User user = om.readValue(resultContent, new TypeReference<User>() {});
-        assertEquals(userService.getUserbyId(4), user);
-
+        verify(userService, times(1)).alter_user_info(2, "Aurora Carding", "9031ufxb", "92114684077","4495771966@598.com", 0 );
     }
-}
+    }

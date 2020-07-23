@@ -3,8 +3,8 @@ package com.example.demo.Controller;
 import com.example.demo.DemoApplicationTests;
 import com.example.demo.controller.UserController;
 import com.example.demo.entity.Resume;
+
 import com.example.demo.service.ResumeService;
-import com.example.demo.service.UserService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
@@ -21,6 +21,8 @@ import org.springframework.web.context.WebApplicationContext;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -61,10 +63,11 @@ public class ResumeControllerTest  extends DemoApplicationTests {
     }
 @Test
 public void alter_resume() throws Exception{
-    MvcResult result = mockMvc.perform(get("/alter_resume?user_id=1&name=Noah Neno&gender=false&birth=1929-02-10&experience=18年&education=初中")
+    MvcResult result = mockMvc.perform(get("/alter_resume?user_id=1&name=Noah Neno&gender=false&birth=1929-02-10&experience=15年&education=初中")
             .contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(status().isOk())
             .andReturn();
+    verify(resumeService, times(1)).alter_resume(1,"Noah Neno", false, "1929-02-10", "15年", "初中");
 }
 
 @Test
