@@ -35,6 +35,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserbyUsername(String username){return userDao.getUserbyUsername(username);}
+
+    @Override
     public void alter_user_info(Integer userid,String username,String password,String phone,String email,int role){
         userDao.alter_user_info(userid,username,password,phone,email,role);
     }

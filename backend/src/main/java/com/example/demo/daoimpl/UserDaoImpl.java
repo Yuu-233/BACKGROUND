@@ -42,4 +42,8 @@ public class UserDaoImpl implements UserDao {
             u.setRole(0);
         userRepository.save(u);
     }
+    @Override
+    public User getUserbyUsername(String username){
+        return userRepository.getUserbyUsername(username);
+    }
 }

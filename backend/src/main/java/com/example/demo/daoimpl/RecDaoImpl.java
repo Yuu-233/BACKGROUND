@@ -3,6 +3,7 @@ package com.example.demo.daoimpl;
 
 import com.example.demo.dao.RecDao;
 import com.example.demo.entity.Recruit_Info;
+import com.example.demo.entity.Resume;
 import com.example.demo.repository.RecRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -53,8 +54,8 @@ public class RecDaoImpl implements RecDao {
         recRepository.deleteByRec_ID(rec_id);
     }
     public void update_rec(int rec_ID, Integer user_ID,  String rec_Salary, String rec_Location, String rec_TimeSchedule,String rec_Title, String rec_Cate, Integer rec_Enrolled, Integer rec_Quota, String rec_Desc, String rec_Experience, String rec_Education){
-    Recruit_Info r = recRepository.findByRec_ID(rec_ID);
-        r.setRec_salary(rec_Salary);
+        //Recruit_Info r = recRepository.findByRec_ID(rec_ID);
+        /*r.setRec_salary(rec_Salary);
         r.setRec_Cate(rec_Cate);
         r.setRec_Desc(rec_Desc);
         r.setRec_Education(rec_Education);
@@ -64,8 +65,8 @@ public class RecDaoImpl implements RecDao {
         r.setRec_Quota(rec_Quota);
         r.setRec_TimeSchedule(rec_TimeSchedule);
         r.setRec_Title(rec_Title);
-        recRepository.save(r);
-
+        recRepository.save(r);*/
+        recRepository.update_rec(rec_ID,user_ID,rec_Salary,rec_Location,rec_TimeSchedule,rec_Title,rec_Cate,rec_Enrolled,rec_Quota,rec_Desc,rec_Experience,rec_Education);
     }
 
 }
