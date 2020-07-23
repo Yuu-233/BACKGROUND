@@ -26,6 +26,7 @@ public class Recruit_Info {
         private String Rec_Desc;
         private String Rec_Experience;
         private String Rec_Education;
+        private String Tags;
         public Recruit_Info(){}
 
 
