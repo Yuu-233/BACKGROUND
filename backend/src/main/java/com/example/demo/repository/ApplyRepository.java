@@ -2,6 +2,8 @@ package com.example.demo.repository;
 
 import com.example.demo.entity.Apply_Info;
 import com.example.demo.entity.CompositePK.Apply_InfoPK;
+import com.example.demo.entity.Recruit_Info;
+import com.example.demo.utils.CompleteApplyInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -21,6 +23,8 @@ public interface ApplyRepository extends JpaRepository<Apply_Info, Apply_InfoPK>
                   "(select Rec_ID ,Rec_Salary,Rec_Location,Rec_TimeSchedule,Rec_Title,Rec_Cate,Rec_Enrolled,Rec_Quota,Rec_Desc,Rec_Experience,Rec_Education,Tags from recruit_info where recruit_info.Rec_ID in (select apply_info.Rec_ID from apply_info where apply_info.User_ID = ?1)) as R\n" +
                   "natural join apply_info",nativeQuery = true)
     public List<Object> getAppbyId(Integer userid);
+
+
 
     @Transactional
     @Modifying
