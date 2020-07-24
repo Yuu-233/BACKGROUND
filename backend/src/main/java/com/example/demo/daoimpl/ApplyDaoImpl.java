@@ -20,6 +20,7 @@ public class ApplyDaoImpl implements ApplyDao {
 
     @Override
     public void add_apply_info(Integer user_id,Integer rec_id){
+        if (applyRepository.checkHistory(user_id,rec_id) == null)
         applyRepository.add_apply_info(user_id,rec_id);
     }
 
