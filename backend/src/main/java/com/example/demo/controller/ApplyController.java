@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.service.ApplyService;
 import com.example.demo.utils.CompleteApplyInfo;
+import com.example.demo.utils.CompleteResumeInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,9 +25,15 @@ public class ApplyController {
     }
 
     @CrossOrigin
-
     @RequestMapping("/getAppbyId")
     public List<CompleteApplyInfo> getAppbyId(@RequestParam("userid")Integer userid){return applyService.getAppbyId(userid);}
+
+
+    @CrossOrigin
+    @RequestMapping("/getMyApplicants")
+    public List<CompleteResumeInfo> getMyApplicants(@RequestParam("userid")Integer userid){
+        return applyService.getMyApplicants(userid);
+    }
 
     @RequestMapping("/delete_apply_info")
     public void delete_apply_info(@RequestParam("user_id")Integer user_id,@RequestParam("rec_id")Integer rec_id){
