@@ -43,8 +43,8 @@ public class ApplyDaoImpl implements ApplyDao {
     }
 
     @Override
-    public List<CompleteResumeInfo> getMyApplicants(Integer userid){
-        List<Object> list = applyRepository.getMyApplicants(userid);
+    public List<CompleteResumeInfo> getMyApplicants(Integer rec_id){
+        List<Object> list = applyRepository.getMyApplicants(rec_id);
         List <CompleteResumeInfo> list1 = new ArrayList<CompleteResumeInfo>();
         for(int i=0;i<list.size();i++){
             Object[] obj = (Object[])list.get(i); //obj中保存的是查询出的对象的属性值
