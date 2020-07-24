@@ -43,12 +43,4 @@ public class CompleteApplyInfo extends Object{
 
     }
 
-    public CompleteApplyInfo(int rec_ID,String rec_Salary,String rec_Location, String rec_TimeSchedule, String rec_Title, String rec_Cate) {
-        this.Rec_ID = rec_ID;
-        this.Rec_Salary=rec_Salary;
-        this.Rec_Location=rec_Location;
-        this.Rec_TimeSchedule=rec_TimeSchedule;
-        this.Rec_Title=rec_Title;
-        this.Rec_Cate=rec_Cate;
-    }
 }
