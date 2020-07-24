@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-
+//post创建 put修改 get查询 delete删除    restful
 //@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class ApplyController {
@@ -31,8 +31,8 @@ public class ApplyController {
 
     @CrossOrigin
     @RequestMapping("/getMyApplicants")
-    public List<CompleteResumeInfo> getMyApplicants(@RequestParam("userid")Integer userid){
-        return applyService.getMyApplicants(userid);
+    public List<CompleteResumeInfo> getMyApplicants(@RequestParam("rec_id")Integer rec_id){
+        return applyService.getMyApplicants(rec_id);
     }
 
     @RequestMapping("/delete_apply_info")

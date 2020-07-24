@@ -28,10 +28,10 @@ public interface ApplyRepository extends JpaRepository<Apply_Info, Apply_InfoPK>
     public List<Object> getAppbyId(Integer userid);
 
 
-    @Query(value = "select *\n" +
-            "from apply_info natural join resume where\n" +
-            "rec_id in(select rec_ID from recruit_info where User_ID  = ?)",nativeQuery = true)
-    List<Object> getMyApplicants(Integer userid);
+    @Query(value = " select * \n" +
+                   "from apply_info natural join resume where \n" +
+                   "Rec_ID =?",nativeQuery = true)
+    List<Object> getMyApplicants(Integer rec_id);
 
     @Transactional
     @Modifying
