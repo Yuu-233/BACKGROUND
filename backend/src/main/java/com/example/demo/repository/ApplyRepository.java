@@ -13,6 +13,9 @@ import java.util.List;
 
 public interface ApplyRepository extends JpaRepository<Apply_Info, Apply_InfoPK>
 {
+    @Query(value="select * from apply_info where User_ID = ?1 and Rec_ID = ?2",nativeQuery = true)
+    Apply_Info checkHistory(Integer user_id,Integer rec_id);
+
     @Transactional
     @Modifying
     @Query(value="insert into apply_info(User_ID,Rec_ID,Accepted) values(?1,?2,0)",nativeQuery = true)
@@ -32,7 +35,7 @@ public interface ApplyRepository extends JpaRepository<Apply_Info, Apply_InfoPK>
 
     @Transactional
     @Modifying
-    @Query(value="delete from Apply_info b where b.User_ID=:user_id and b.Rec_ID=:rec_id", nativeQuery = true)
+    @Query(value="delete from Apply_info where User_ID=?1 and Rec_ID=?2", nativeQuery = true)
     public void delete_apply_info(Integer user_id,Integer rec_id);
 
     @Transactional
