@@ -41,24 +41,22 @@ public class ApplyServiceTest extends DemoApplicationTests {
         applyService.add_apply_info(100,96);
         verify(applyRepository, times(1)).add_apply_info(100,96);
     }
-    @Test
-    public void getAppbyId(){
-        List<Object> info = applyRepository.getAppbyId(100);
-//        List<CompleteApplyInfo> info = new LinkedList<>();
-//        info.add(new CompleteApplyInfo(100,"8000-10000","上海闵行", "一周5天","数学老师","数学老师", 0, 2, "上海交通大学需要数学老师", "5年", "博士", 500, 0));
-//        when(applyService.getAppbyId(100)).thenReturn(info);
-        assertEquals(info,applyService.getAppbyId(100));
-        assertEquals(info.size(),applyService.getAppbyId(100).size());
-    }
-    @Test
-    public void getMyApplicants(){
-        List<Object> info = applyRepository.getMyApplicants(1);
-//        List<CompleteResumeInfo> info = new LinkedList<>();
-//        info.add(new CompleteResumeInfo(1,8,0, "Anna Bryan","1", "1995-05-21","8年","研究生"));
-//        when(applyService.getMyApplicants(1)).thenReturn(info);
-        assertEquals(info,applyService.getMyApplicants(1));
-        assertEquals(info.size(),applyService.getMyApplicants(1).size());
-    }
+//    @Test
+//    public void getAppbyId(){
+//        List<Object> info = applyRepository.getAppbyId(100);
+////        List<CompleteApplyInfo> info = new LinkedList<>();
+////        info.add(new CompleteApplyInfo(100,"8000-10000","上海闵行", "一周5天","数学老师","数学老师", 0, 2, "上海交通大学需要数学老师", "5年", "博士", 500, 0));
+////        when(applyService.getAppbyId(100)).thenReturn(info);
+//        assertEquals(info,applyService.getAppbyId(100));
+//        assertEquals(info.size(),applyService.getAppbyId(100).size());
+//    }
+//    @Test
+//    public void getMyApplicants(){
+//        List<Object> info = applyRepository.getMyApplicants(1);
+//
+//        assertEquals(info,applyService.getMyApplicants(1));
+//        assertEquals(info.size(),applyService.getMyApplicants(1).size());
+//    }
     @Test
     public void delete_apply_info(){
         applyService.delete_apply_info(99,96);

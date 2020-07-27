@@ -100,7 +100,7 @@ public class UserControllerTest extends DemoApplicationTests {
                 .andReturn();
         verify(userService, times(1)).alter_user_info(2, "Aurora Carding", "9031ufxb", "92114684077","4495771966@598.com", 0 );
     }
-    @Test
+    @Test //failed
     public void mylogin() throws Exception{
         JSONObject user = new JSONObject("{'user_ID':7, 'userName': 'Erin Scholcroft', 'password': '2079layn',  'user_Name': 'Erin Scholcroft','role': 1, 'email': '4812983934@869.com','phone': '19238276485'}");
 

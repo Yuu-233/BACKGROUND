@@ -29,8 +29,8 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void alter_user_info(Integer userid,String username,String password,String phone,String email,int role)
     {
-        User user=userRepository.findUserByUsername(username);
-        if(user!=null)
+//        User user=userRepository.findUserByUsername(username);
+//        if(user!=null)
         userRepository.alter_user_info(userid,username,password,phone,email,role);
     }
     @Override
