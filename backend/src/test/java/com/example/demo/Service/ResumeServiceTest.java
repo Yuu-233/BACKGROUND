@@ -31,16 +31,16 @@ public class ResumeServiceTest extends DemoApplicationTests {
 
     @MockBean
     private ResumeRepository resumeRepository;
-
+// should be 4 tests
     @Test
     public void get_applicants(){
-       /* List<Resume> resumes = new LinkedList<>();
+        List<Resume> resumes = new LinkedList<>();
         resumes.add(new Resume(1,"test1",false,"1995-01-29","无","本科"));
         resumes.add(new Resume(2,"test2",true,"1967-10-18","3年","硕士"));
         when(resumeService.get_applicants()).thenReturn(resumes);
 
         assertEquals(resumes,resumeService.get_applicants());
-        assertEquals(2,resumeService.get_applicants().size());*/
+        assertEquals(2,resumeService.get_applicants().size());
         /*Integer resume_count = 801;
         assertEquals(resume_count,resumeService.get_applicants().size());*/
     }

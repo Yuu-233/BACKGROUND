@@ -27,8 +27,10 @@ public class RecServiceImpl implements RecService{
     }
 
     public List<Recruit_Info> getRecbyId(Integer userid){
-        return recDao.getRecbyId(userid);}
-    public void delete_rec(int rec_id){
+        return recDao.getRecbyId(userid);
+    }
+    public void delete_rec(int rec_id)
+    {
         recDao.delete_rec(rec_id);
     }
     public void update_rec(int rec_ID, Integer user_ID,  String rec_Salary, String rec_Location, String rec_TimeSchedule,String rec_Title, String rec_Cate, Integer rec_Enrolled, Integer rec_Quota, String rec_Desc, String rec_Experience, String rec_Education){

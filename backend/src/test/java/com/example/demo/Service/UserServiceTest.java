@@ -28,7 +28,7 @@ public class UserServiceTest extends DemoApplicationTests {
 
     //@MockBean
     private UserRepository userRepository;
-
+// should be 6 tests
     @Test
     public void getUserById(){
         /*Integer userId=1234;
