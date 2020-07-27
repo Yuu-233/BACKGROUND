@@ -7,6 +7,7 @@ import com.example.demo.entity.Recruit_Info;
 import com.example.demo.service.ApplyService;
 import com.example.demo.service.UserService;
 import com.example.demo.utils.CompleteApplyInfo;
+import com.example.demo.utils.CompleteResumeInfo;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
@@ -95,20 +96,26 @@ public class ApplyControllerTest extends DemoApplicationTests {
         verify(applyService, times(1)).update_apply_info(99, 223, 1);
     }
 
-//    @Test
-//    public void getAppbyId() throws Exception {
-//        MvcResult result = mockMvc.perform(get("/getAppbyId?userid=1")
-//                .contentType(MediaType.APPLICATION_JSON_VALUE))
-//                .andExpect(status().isOk())
-//                .andReturn();
-////            .contentType(MediaType.APPLICATION_JSON)
-////            .characterEncoding("UTF-8"))
-////            .andExpect(status().isOk())
-////            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
-////            .andReturn();
-//        String resultContent = result.getResponse().getContentAsString();
-//        List<CompleteApplyInfo> app = om.readValue(resultContent, new TypeReference<List<CompleteApplyInfo>>() {
-//        });
-//        assertEquals(applyService.getAppbyId(1), app);
-//    }
+@Test
+public void getAppbyId() throws Exception {
+    MvcResult result = mockMvc.perform(get("/getAppbyId?userid=1")
+            .contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(status().isOk())
+            .andReturn();
+    String resultContent = result.getResponse().getContentAsString();
+    List<CompleteApplyInfo> app = om.readValue(resultContent, new TypeReference<List<CompleteApplyInfo>>() {
+    });
+    assertEquals(applyService.getAppbyId(1), app);
+}
+    @Test
+    public void getMyApplicants() throws Exception {
+        MvcResult result = mockMvc.perform(get("/getMyApplicants?rec_id=1")
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk())
+                .andReturn();
+        String resultContent = result.getResponse().getContentAsString();
+        List<CompleteResumeInfo> app = om.readValue(resultContent, new TypeReference<List<CompleteResumeInfo>>() {
+        });
+        assertEquals(applyService.getMyApplicants(1), app);
+    }
 }

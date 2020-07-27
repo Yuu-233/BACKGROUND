@@ -16,7 +16,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -37,7 +37,7 @@ public class ResumeServiceTest extends DemoApplicationTests {
         List<Resume> resumes = new LinkedList<>();
         resumes.add(new Resume(1,"test1",false,"1995-01-29","无","本科"));
         resumes.add(new Resume(2,"test2",true,"1967-10-18","3年","硕士"));
-        when(resumeService.get_applicants()).thenReturn(resumes);
+        when(resumeRepository.get_applicants()).thenReturn(resumes);
 
         assertEquals(resumes,resumeService.get_applicants());
         assertEquals(2,resumeService.get_applicants().size());
@@ -49,11 +49,22 @@ public class ResumeServiceTest extends DemoApplicationTests {
     public void filt_applicants(){
         List<Resume> resumes = new LinkedList<>();
         resumes.add(new Resume(1,"test1",false,"1995-01-29","无","本科"));
-        when(resumeService.filt_applicants(null,"本科")).thenReturn(resumes);
+        when(resumeRepository.filt_applicants("","本科")).thenReturn(resumes);
         assertEquals(resumes,resumeService.filt_applicants(null,"本科"));
         assertEquals(1,resumeService.filt_applicants(null,"本科").size());
 
         /*Integer filt_count = 13;
         assertEquals(filt_count,resumeService.filt_applicants("1年","高中").size());*/
+    }
+    @Test
+    public void getResumebyId(){
+        Resume r = new Resume (1001, "Anna Bryan", true, "1995-05-05", "2年", "研究生");
+        when (resumeRepository.getResumebyId(1001)).thenReturn(r);
+        assertEquals(r, resumeService.getResumebyId(1001));
+    }
+    @Test
+    public void alter_resume(){
+        resumeService.alter_resume(1, "Noah Neno", false, "1929-02-10", "15年", "本科");
+    verify(resumeRepository, times(1)).alter_resume(1, "Noah Neno", false, "1929-02-10", "15年", "本科");
     }
 }

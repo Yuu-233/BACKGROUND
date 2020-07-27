@@ -25,15 +25,13 @@ public class EmployController {
 
     @CrossOrigin
     @RequestMapping("/getMyEmployees")
-    public List<CompleteResumeInfo> getMyApplicants(@RequestParam("rec_id")Integer rec_id){
+    public List<CompleteResumeInfo> getMyEmployees(@RequestParam("rec_id")Integer rec_id){
         return employService.getMyEmployees(rec_id);
     }
 
     @CrossOrigin
     @RequestMapping("/getEmpbyId")
     public List<CompleteEmployInfo> getEmpbyId(@RequestParam("userid")Integer userid){return employService.getEmpbyId(userid);}
-
-
 
     @RequestMapping("/delete_employ_info")
     public void delete_apply_info(@RequestParam("user_id")Integer user_id,@RequestParam("rec_id")Integer rec_id){
