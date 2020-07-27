@@ -53,6 +53,8 @@ public class RecDaoImpl implements RecDao {
     public void delete_rec(int rec_id){
         recRepository.deleteByRec_ID(rec_id);
     }
+
+
     public void update_rec(int rec_ID, Integer user_ID,  String rec_Salary, String rec_Location, String rec_TimeSchedule,String rec_Title, String rec_Cate, Integer rec_Enrolled, Integer rec_Quota, String rec_Desc, String rec_Experience, String rec_Education){
 //         //Recruit_Info r = recRepository.findByRec_ID(rec_ID);
 //         /*r.setRec_salary(rec_Salary);

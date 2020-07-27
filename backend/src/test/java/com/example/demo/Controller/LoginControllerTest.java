@@ -32,6 +32,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 @AutoConfigureMockMvc
 public class LoginControllerTest extends DemoApplicationTests {
+
     @Test
     public void contextLoads(){}
 
@@ -59,7 +60,7 @@ public class LoginControllerTest extends DemoApplicationTests {
 
     @Test
     public void register() throws Exception {
-        MvcResult result1 = mockMvc.perform(get("/register?username=Aurora Gimlet&password=789wersdff&email=2427328967@177.com&phone=76796318788").contentType(MediaType.APPLICATION_JSON_VALUE))
+        MvcResult result1 = mockMvc.perform(get("/register?username=Aurora Brown&password=789wedfgff&email=24277898967@177.com&phone=15996318788").contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk()).andExpect(jsonPath("$.status").value(1)).andReturn();
     }
 

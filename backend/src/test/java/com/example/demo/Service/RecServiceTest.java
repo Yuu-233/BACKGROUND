@@ -30,7 +30,7 @@ public class RecServiceTest extends DemoApplicationTests {
 
     @MockBean
     private RecRepository recRepository;
-
+/// should be 6 tests
     @Test
     public void get_jobs(){
         List<Recruit_Info> info = new LinkedList<>();
