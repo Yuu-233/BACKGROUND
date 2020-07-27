@@ -12,7 +12,7 @@ public interface ApplyService {
 
     public void delete_apply_info(Integer user_id,Integer rec_id);
     public void update_apply_info(Integer user_id,Integer rec_id, Integer accepted);
-    public List<CompleteResumeInfo> getMyApplicants(Integer userid);
+    public List<CompleteResumeInfo> getMyApplicants(Integer rec_id);
 
 
 }
