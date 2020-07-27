@@ -7,11 +7,9 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name="rec_comment")
+@Table(name="apply_info")
 public class Apply_Info {
     @EmbeddedId
     private Apply_InfoPK apply_infoPK;
     private Integer Accepted;
-
-
 }
