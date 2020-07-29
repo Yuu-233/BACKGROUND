@@ -57,46 +57,50 @@ public class RecControllerTest extends DemoApplicationTests {
     @AfterEach
     void tearDown() {
     }
+
     @Test
-    public void get_jobs() throws Exception{
-            MvcResult result = mockMvc.perform(get("/get_jobs").contentType(MediaType.APPLICATION_JSON_VALUE))
-                    .andExpect(status().isOk()).andReturn();
+    public void get_jobs() throws Exception {
+        MvcResult result = mockMvc.perform(get("/get_jobs").contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk()).andReturn();
         String resultContent = result.getResponse().getContentAsString();
-        List<Resume> resumes = om.readValue(resultContent, new TypeReference<List<Resume>>() {});
+        List<Resume> resumes = om.readValue(resultContent, new TypeReference<List<Resume>>() {
+        });
         assertEquals(recService.get_jobs().size(), resumes.size());
     }
 
-        @Test
-    public void filt_jobs() throws Exception{
-            MvcResult result = mockMvc.perform(get("/filt_jobs?salary=6000-7000&location=徐汇").contentType(MediaType.APPLICATION_JSON_VALUE))
-                    .andExpect(status().isOk()).andReturn();
+    @Test
+    public void filt_jobs() throws Exception {
+        MvcResult result = mockMvc.perform(get("/filt_jobs?salary=6000-7000&location=徐汇").contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk()).andReturn();
         String resultContent = result.getResponse().getContentAsString();
-        List<Recruit_Info> rec = om.readValue(resultContent, new TypeReference<List<Recruit_Info>>() {});
-        assertEquals(recService.filt_jobs("6000-7000","徐汇",null,null,null,null), rec);
+        List<Recruit_Info> rec = om.readValue(resultContent, new TypeReference<List<Recruit_Info>>() {
+        });
+        assertEquals(recService.filt_jobs("6000-7000", "徐汇", null, null, null, null), rec);
     }
 
     @Test
-    public void getRecbyId() throws Exception{
+    public void getRecbyId() throws Exception {
         MvcResult result = mockMvc.perform(get("/getRecbyId?userid=2").contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk()).andReturn();
         String resultContent = result.getResponse().getContentAsString();
-        List<Recruit_Info> rec = om.readValue(resultContent, new TypeReference<List<Recruit_Info>>() {});
+        List<Recruit_Info> rec = om.readValue(resultContent, new TypeReference<List<Recruit_Info>>() {
+        });
         assertEquals(recService.getRecbyId(2), rec);
 
     }
 
 
     @Test
-    public void update_rec() throws Exception{
+    public void update_rec() throws Exception {
         MvcResult result1 = mockMvc.perform(get("/update_rec?rec_ID=3&user_ID=82&rec_Salary=4500-8000&rec_Location=松江&rec_TimeSchedule=-&rec_Title=服务员包吃住4500起&rec_Cate=服务员&rec_Enrolled=4&rec_Quota=5&rec_Desc=-&rec_Experience=不限&rec_Education=不限")
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
                 .andReturn();
-        verify(recService, times(1)).update_rec(3,82,"4500-8000", "松江", "-", "服务员包吃住4500起", "服务员", 4,5,"-", "不限", "不限");
+        verify(recService, times(1)).update_rec(3, 82, "4500-8000", "松江", "-", "服务员包吃住4500起", "服务员", 4, 5, "-", "不限", "不限");
     }
 
     @Test
-    public void delete_job() throws Exception{
+    public void delete_job() throws Exception {
         MvcResult result1 = mockMvc.perform(get("/delete_rec?rec_id=499")
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
@@ -105,14 +109,14 @@ public class RecControllerTest extends DemoApplicationTests {
         verify(recService, times(1)).delete_rec(499);
     }
 
-        @Test
-    public void create_job() throws Exception{
-            MvcResult result1 = mockMvc.perform(get("/create_job?userid=1000&salary=4000-9000&location=上海，闵行&schedule=一周5天&title=网络客服&cate=网络/在线客服&quota=5&desc=网络/在线客服&exp=不限&edu=本科")
-                    .contentType(MediaType.APPLICATION_JSON_VALUE))
-                    .andExpect(status().isOk())
-                    .andReturn();
+    @Test
+    public void create_job() throws Exception {
+        MvcResult result1 = mockMvc.perform(get("/create_job?userid=1000&salary=4000-9000&location=上海，闵行&schedule=一周5天&title=网络客服&cate=网络/在线客服&quota=5&desc=网络/在线客服&exp=不限&edu=本科")
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk())
+                .andReturn();
 
-         verify(recService, times(1)).create_job(1000,"4000-9000","上海，闵行", "一周5天", "网络客服", "网络/在线客服", 5,"网络/在线客服", "不限", "本科");
+        verify(recService, times(1)).create_job(1000, "4000-9000", "上海，闵行", "一周5天", "网络客服", "网络/在线客服", 5, "网络/在线客服", "不限", "本科");
     }
 
 }

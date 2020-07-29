@@ -7,7 +7,7 @@ public class Message {
     private String message;
     User user;
 
-    public Message(){}
+//    public Message(){}
 
     public Message(Integer status, String message, User user) {
         this.status = status;
@@ -19,23 +19,23 @@ public class Message {
         return user;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
+//    public void setStatus(Integer status) {
+//        this.status = status;
+//    }
 
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
+//    public void setMessage(String message) {
+//        this.message = message;
+//    }
 }

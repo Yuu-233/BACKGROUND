@@ -20,16 +20,17 @@ import static org.mockito.Mockito.*;
 public class UserServiceTest extends DemoApplicationTests {
 
     @Test
-    public void contextLoads(){
+    public void contextLoads() {
     }
 
     @Autowired
     private UserService userService;
     @MockBean
     private UserRepository userRepository;
-// should be 6 tests
+
+    // should be 6 tests
     @Test
-    public void getUserById(){
+    public void getUserById() {
         /*Integer userId=1234;
         User user = new User("testusername","testpassword","testemail",false,"testphone");
         when(userRepository.getUserbyId(userId)).thenReturn(user);
@@ -39,44 +40,57 @@ public class UserServiceTest extends DemoApplicationTests {
         //assertEquals(user,userService.getUserbyId(1));//非mock模式
         //assertEquals(user,userService.getUserbyId(userId)); *///mock模式
 
-        User user= new User(1, "Tiffani Anstice", "2152fyrx", "5897311806@564.com",  1,"07401238030");
+        User user = new User(1, "Tiffani Anstice", "2152fyrx", "5897311806@564.com", 1, "07401238030");
         when(userRepository.getUserbyId(1)).thenReturn(user);
-        assertEquals(user,userService.getUserbyId(1));//非mock模式*/
+        assertEquals(user, userService.getUserbyId(1));//非mock模式*/
     }
 
     @Test
-    public void checkUser(){
+    public void checkUser() {
 
-        User user= new User(1, "Tiffani Anstice", "2152fyrx", "5897311806@564.com",  1,"07401238030");
+        User user = new User(1, "Tiffani Anstice", "2152fyrx", "5897311806@564.com", 1, "07401238030");
         when(userRepository.checkUser("Tiffani Anstice", "2152fyrx")).thenReturn(user);
-        assertEquals(user,userService.checkUser("Tiffani Anstice","2152fyrx"));
+        assertEquals(user, userService.checkUser("Tiffani Anstice", "2152fyrx"));
     }
+
     @Test
-    public void getUserByUsername(){
+    public void getUserByUsername() {
         String name = "Tiffani Anstice";
 //      User u = new User(1002, "Jack Tarantino", "456sdfsd", "9690489496@027.com", 1, "18544775620");
-        User user= new User(1, "Tiffani Anstice", "2152fyrx", "5897311806@564.com",  1,"07401238030");
-        when (userRepository.getUserbyUsername(name)).thenReturn(user);
+        User user = new User(1, "Tiffani Anstice", "2152fyrx", "5897311806@564.com", 1, "07401238030");
+        when(userRepository.getUserbyUsername(name)).thenReturn(user);
         assertEquals(user, userService.getUserbyUsername(name));
     }
 
     @Test
-    public void alter_user_info(){
-        userService.alter_user_info(1, "Tiffani Anstice", "2152fyrx", "07041238030", "5897311806@564.com", 2 );
-         verify(userRepository, times(1)).alter_user_info(1, "Tiffani Anstice", "2152fyrx", "07041238030", "5897311806@564.com", 2);
+    public void alter_user_info() {
+        userService.alter_user_info(1, "Tiffani Anstice", "2152fyrx", "07041238030", "5897311806@564.com", 2);
+        verify(userRepository, times(1)).alter_user_info(1, "Tiffani Anstice", "2152fyrx", "07041238030", "5897311806@564.com", 2);
 //        verify(userRepository, times(1)).findUserByUsername("Tiffani Anstice");
     }
+
     @Test
-    public void change_state(){
-        User user = new User (1, "Tiffani Anstice", "2152fyrx", "5897311806@564.com",  1,"07401238030");
+    public void change_state_0() {
+        User user = new User(2, "Aurora Carding", "9031ufxb", "4495771966@598.com", 2, "92114684077");
         when(userRepository.getUserbyId(1)).thenReturn(user);
         userService.change_state(1);
-        verify(userRepository,times(1)).save(user);
+        assertEquals(0, user.getRole());
+        verify(userRepository, times(1)).save(user);
     }
+
     @Test
-    public void register (){
-    Boolean b = userService.register("Jack Brown", "7892lkjh", "78945625@258.com", "Shaghai");
-    assertEquals(true, b);
-    verify(userRepository, times(1)).findUserByUsername("Jack Brown");
+    public void change_state_2() {
+        User user = new User(2, "Aurora Carding", "9031ufxb", "4495771966@598.com", 0, "92114684077");
+        when(userRepository.getUserbyId(1)).thenReturn(user);
+        userService.change_state(1);
+        assertEquals(2, user.getRole());
+        verify(userRepository, times(1)).save(user);
+    }
+
+    @Test
+    public void register() {
+        Boolean b = userService.register("Jack Brown", "7892lkjh", "78945625@258.com", "Shaghai");
+        assertEquals(true, b);
+        verify(userRepository, times(1)).findUserByUsername("Jack Brown");
     }
 }

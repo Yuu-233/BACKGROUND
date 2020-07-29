@@ -21,12 +21,15 @@ public class ResumeDaolmpl implements ResumeDao {
      }
 
      @Override
-     public void alter_resume(Integer user_id,String name,Boolean gender,String birth,String experience,String education){
-           Integer exist_user= resumeRepository.checkUserbyId(user_id);
-           if(exist_user !=null)
-                resumeRepository.alter_resume(user_id,name,gender,birth,experience,education);
+     public void alter_resume(int user_id,String name,Boolean gender,String birth,String experience,String education){
+           Resume exist_user= resumeRepository.getResumebyId(user_id);
+           System.out.println(exist_user);
+           if(exist_user != null)
+               resumeRepository.alter_resume(user_id,name,gender,birth,experience,education);
            else
-                resumeRepository.add_resume(user_id,name,gender,birth,experience,education);
+               resumeRepository.add_resume(user_id,name,gender,birth,experience,education);
+
+
      }
 
      @Override

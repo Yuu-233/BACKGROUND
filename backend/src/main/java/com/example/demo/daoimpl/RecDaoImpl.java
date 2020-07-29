@@ -30,19 +30,26 @@ public class RecDaoImpl implements RecDao {
             lowsalary = splitSalary[0];
             highsalary = splitSalary[splitSalary.length - 1];
         }
-        else{
-            lowsalary="0";
-            highsalary="1000000";
+//        else{
+//            lowsalary="0";
+//            highsalary="1000000";
+//        }
+        if(cate == null) cate="";
+        if(location == null) location = "";
+        if(title == null) title="";
+        if(experience == null) experience="";
+        if(education == null) education = "";
+        if(salary==null){
+            System.out.println("456456456456");
+            return recRepository.filt_jobs_without_salary(cate,location,title,experience,education);
         }
-           if(cate == null) cate="";
-           if(location == null) location = "";
-           if(title == null) title="";
-           if(experience == null) experience="";
-           if(education == null) education = "";
-        if(salary==null)
-        return recRepository.filt_jobs_without_salary(cate,location,title,experience,education);
-        else
-         return recRepository.filt_jobs(lowsalary,highsalary,cate,location,title,experience,education);
+        else{
+            System.out.println("mmmmmmmmm");
+            System.out.println(lowsalary);
+            System.out.println(highsalary);
+            return recRepository.filt_jobs(lowsalary,highsalary,cate,location,title,experience,education);
+        }
+
     }
 
     public void create_job(Integer userid,String salary,String location,String schedule,String title,String cate,Integer quota,String desc,String exp,String edu){

@@ -36,10 +36,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class EmployControllerTest  extends DemoApplicationTests {
+public class EmployControllerTest extends DemoApplicationTests {
 
     @Test
-    public void contextLoads(){}
+    public void contextLoads() {
+    }
 
 
     private MockMvc mockMvc;//模拟网络请求
@@ -51,6 +52,7 @@ public class EmployControllerTest  extends DemoApplicationTests {
 
 
     private ObjectMapper om = new ObjectMapper();
+
     @Before
     public void setUp() {
 //        mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
@@ -64,6 +66,7 @@ public class EmployControllerTest  extends DemoApplicationTests {
     @AfterEach
     void tearDown() {
     }
+
     //should be 5 tests
     @Test
     public void add_employ_info() throws Exception {
@@ -73,6 +76,7 @@ public class EmployControllerTest  extends DemoApplicationTests {
                 .andReturn();
         verify(employService, times(1)).add_employ_info(100, 125);
     }
+
     @Test
     public void delete_employ_info() throws Exception {
         MvcResult result2 = mockMvc.perform(get("/delete_employ_info?user_id=99&rec_id=96")
@@ -90,6 +94,7 @@ public class EmployControllerTest  extends DemoApplicationTests {
                 .andReturn();
         verify(employService, times(1)).update_employ_info(99, 223, 1);
     }
+
     @Test
     public void getEmpbyId() throws Exception {
         MvcResult result = mockMvc.perform(get("/getEmpbyId?userid=1")
@@ -101,6 +106,7 @@ public class EmployControllerTest  extends DemoApplicationTests {
         });
         assertEquals(employService.getEmpbyId(1), app);
     }
+
     @Test
     public void getMyEmployees() throws Exception {
         MvcResult result = mockMvc.perform(get("/getMyEmployees?rec_id=1")

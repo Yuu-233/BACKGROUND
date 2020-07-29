@@ -19,6 +19,8 @@ public class RecServiceImpl implements RecService{
     }
 
     public List<Recruit_Info>filt_jobs(String salary,String cate,String location,String title,String experience,String education){
+        List<Recruit_Info> r = recDao.filt_jobs(salary, cate, location, title, experience, education);
+        System.out.println(r.size());
         return recDao.filt_jobs(salary,cate,location,title,experience,education);
     }
 
