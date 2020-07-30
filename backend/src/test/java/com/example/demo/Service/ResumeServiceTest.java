@@ -36,8 +36,8 @@ public class ResumeServiceTest extends DemoApplicationTests {
     @Test
     public void get_applicants() {
         List<Resume> resumes = new LinkedList<>();
-        resumes.add(new Resume(1, "test1", false, "1995-01-29", "无", "本科"));
-        resumes.add(new Resume(2, "test2", true, "1967-10-18", "3年", "硕士"));
+        resumes.add(new Resume("test1", false, "1995-01-29", "无", "本科"));
+        resumes.add(new Resume( "test2", true, "1967-10-18", "3年", "硕士"));
         when(resumeRepository.get_applicants()).thenReturn(resumes);
 
         assertEquals(resumes, resumeService.get_applicants());

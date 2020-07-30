@@ -47,8 +47,13 @@ public class UserServiceTest extends DemoApplicationTests {
 
     @Test
     public void checkUser() {
-
-        User user = new User(1, "Tiffani Anstice", "2152fyrx", "5897311806@564.com", 1, "07401238030");
+        User user = new User();
+        user.setUser_ID(1);
+        user.setUserName("Tiffani Anstice");
+        user.setPassword("2152fyrx");
+        user.setEmail("5897311806@564.com");
+        user.setRole(1);
+        user.setPhone("07401238030");
         when(userRepository.checkUser("Tiffani Anstice", "2152fyrx")).thenReturn(user);
         assertEquals(user, userService.checkUser("Tiffani Anstice", "2152fyrx"));
     }
