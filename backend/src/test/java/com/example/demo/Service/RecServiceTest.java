@@ -36,7 +36,21 @@ public class RecServiceTest extends DemoApplicationTests {
     public void get_jobs() {
         List<Recruit_Info> info = new LinkedList<>();
         info.add(new Recruit_Info(1, null, "3000-5000", "上海", null, "test", "test", null, null, null, "不限", "不限"));
-        info.add(new Recruit_Info(2, null, "3000-5000", "北京", null, "test", "test", null, null, null, "不限", "不限"));
+        Recruit_Info r = new Recruit_Info();
+        r.setUser_ID(2);
+        r.setRec_ID(2);
+        r.setRec_salary("3000-5000");
+        r.setRec_Location("上海");
+        r.setRec_TimeSchedule("testtime");
+        r.setRec_Title("testtitle");
+        r.setRec_Cate("testcate");
+        r.setRec_Enrolled(0);
+        r.setRec_Quota(2);
+        r.setRec_Desc("-");
+        r.setRec_Experience("不限");
+        r.setRec_Education("不限");
+        info.add(r);
+//        info.add(new Recruit_Info(2, null, "3000-5000", "北京", null, "test", "test", null, null, null, "不限", "不限"));
         when(recRepository.get_jobs()).thenReturn(info);
         assertEquals(info, recService.get_jobs());
         assertEquals(2, recService.get_jobs().size());
@@ -45,39 +59,26 @@ public class RecServiceTest extends DemoApplicationTests {
         assertEquals(job_count,recService.get_jobs().size());*/ //非mock
     }
 
-//    @Test //failed
-//    public void filt_jobs_without_salary() {
-//        List<Recruit_Info> info = new LinkedList<>();
-//        info.add(new Recruit_Info(1, 5, "8000-10000", "北京", null, "title", null, null, null, null, null, null));
-//        info.add(new Recruit_Info(2, 10, "9000-10000", "北京", null, "title", null, null, null, null, null, null));
-//        when(recRepository.filt_jobs_without_salary(null, "北京", null, null, null)).thenReturn(info);
-//        assertEquals(info, recService.filt_jobs(null, null, "北京", null, null, null));
-//    }
-//
-//    @Test //failed
-//    public void filt_jobs_null_salary() {
-//        List<Recruit_Info> info = new LinkedList<>();
-//        info.add(new Recruit_Info(1, null, "3000-5000", "北京", null, "test", "test", null, null, null, "不限", "不限"));
-////      when(recRepository.filt_jobs(null, null, "北京", null, null, null)).thenReturn(info);
-//        when(recRepository.filt_jobs_without_salary(null, "北京", null, null, null)).thenReturn(info);
-//        assertEquals(info, recService.filt_jobs(null, null, "北京", null, null, null));
-//        assertEquals(1, recService.filt_jobs(null, null, "北京", null, null, null).size());
-//
-//        /*Integer filt_count = 200;
-//        assertEquals(filt_count,recService.filt_jobs(null,null,"北京",null,null,null).size());*/ //非mock
-//    }
-//
-//    @Test   //failed
-//    public void filt_jobs_not_null_salary() {
-//        List<Recruit_Info> info = new LinkedList<>();
-//        info = recRepository.filt_jobs("3000", "5000", null, "北京", null, null, null);
-////        info.add(new Recruit_Info(1, null, "3000-5000", "北京", null, "test", "test", null, null, null, "不限", "不限"));
-////        when(recRepository.filt_jobs("3000", "5000", null, "北京", null, null, null)).thenReturn(info);
-//        assertEquals(info, recService.filt_jobs("3000-5000", null, "北京", null, null, null));
-//        assertEquals(114, recService.filt_jobs("3000-5000", null, "北京", null, null, null).size());
-//        /*Integer filt_count = 200;
-//        assertEquals(filt_count,recService.filt_jobs(null,null,"北京",null,null,null).size());*/ //非mock
-//    }
+    @Test
+    public void filt_jobs_without_salary() {
+        List<Recruit_Info> info = new LinkedList<>();
+        info.add(new Recruit_Info(1, 5, "8000-10000", "北京", null, "title", null, null, null, null, null, null));
+        info.add(new Recruit_Info(2, 10, "9000-10000", "北京", null, "title", null, null, null, null, null, null));
+        when(recRepository.filt_jobs_without_salary("", "北京", "", "", "")).thenReturn(info);
+        assertEquals(info, recService.filt_jobs(null, null, "北京", null, null, null));
+        assertEquals(info.size(), recService.filt_jobs(null, null, "北京", null, null, null).size());
+    }
+
+    @Test
+    public void filt_jobs_with_salary() {
+        List<Recruit_Info> info = new LinkedList<>();
+        info.add(new Recruit_Info(1, 5, "8000-10000", "北京", null, "title", null, null, null, null, null, null));
+        info.add(new Recruit_Info(2, 10, "9000-10000", "北京", null, "title", null, null, null, null, null, null));
+        when(recRepository.filt_jobs("3000", "5000", "", "北京", "", "", "")).thenReturn(info);
+        assertEquals(info, recService.filt_jobs("3000-5000", null, "北京", null, null, null));
+        assertEquals(info.size(), recService.filt_jobs("3000-5000", null, "北京", null, null, null).size());
+
+    }
 
     @Test
     public void create_jobs() {
@@ -88,7 +89,7 @@ public class RecServiceTest extends DemoApplicationTests {
     @Test
     public void getRecbyId() {
         List<Recruit_Info> info = new LinkedList<>();
-        info.add(new Recruit_Info(1, 100, "3000-5000", "北京", null, "test", "test", null, null, null, "不限", "不限"));
+        info.add(new Recruit_Info(100, "3000-5000", "北京", null, "test", "test", null, null, null, "不限", "不限"));
         when(recRepository.getRecbyId(100)).thenReturn(info);
         assertEquals(info, recService.getRecbyId(100));
         assertEquals(1, recService.getRecbyId(100).size());
@@ -102,7 +103,21 @@ public class RecServiceTest extends DemoApplicationTests {
 
     @Test
     public void update_rec() {
+        Recruit_Info r = new Recruit_Info(1, 2, "3600-4500", " 徐汇 ", "", "公司保洁员/商场保洁员", "保洁", 0, 2, "-", "不限", "不限");
         recService.update_rec(1, 2, "3600-4500", " 徐汇 ", "", "公司保洁员/商场保洁员", "保洁", 0, 2, "-", "不限", "不限");
+
+        assertEquals(1, r.getRec_ID());
+        assertEquals(2, r.getUser_ID());
+        assertEquals("3600-4500", r.getRec_salary());
+        assertEquals(" 徐汇 ", r.getRec_Location());
+        assertEquals("", r.getRec_TimeSchedule());
+        assertEquals("公司保洁员/商场保洁员", r.getRec_Title());
+        assertEquals("保洁", r.getRec_Cate());
+        assertEquals(0, r.getRec_Enrolled());
+        assertEquals(2, r.getRec_Quota());
+        assertEquals("-", r.getRec_Desc());
+        assertEquals("不限", r.getRec_Education());
+        assertEquals("不限", r.getRec_Experience());
         verify(recRepository, times(1)).update_rec(1, 2, "3600-4500", " 徐汇 ", "", "公司保洁员/商场保洁员", "保洁", 0, 2, "-", "不限", "不限");
     }
 }
