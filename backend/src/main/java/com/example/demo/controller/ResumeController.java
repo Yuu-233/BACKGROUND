@@ -24,7 +24,7 @@ public class ResumeController {
 
     @CrossOrigin
     @RequestMapping("/alter_resume")
-    public void alter_resume(@RequestParam("user_id") Integer user_id, @RequestParam("name")String name, @RequestParam("gender")Boolean gender,@RequestParam("birth")String birth,@RequestParam("experience")String experience,@RequestParam("education")String education){
+    public void alter_resume(@RequestParam("user_id") int user_id, @RequestParam("name")String name, @RequestParam("gender")Boolean gender,@RequestParam("birth")String birth,@RequestParam("experience")String experience,@RequestParam("education")String education){
       resumeService.alter_resume(user_id,name,gender,birth,experience,education);
     }
 

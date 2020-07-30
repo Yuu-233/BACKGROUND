@@ -16,7 +16,7 @@ public interface ResumeRepository extends JpaRepository<Resume,Integer> {
     List<Resume> get_applicants();
 
     @Query(value="select User_ID from Resume where User_ID = :user_id")
-    Integer checkUserbyId(Integer user_id);
+    int checkUserbyId(int user_id);
 
     @Transactional
     @Modifying
@@ -32,5 +32,5 @@ public interface ResumeRepository extends JpaRepository<Resume,Integer> {
     List<Resume> filt_applicants(String experience,String education);
 
     @Query(value="select * from Resume where User_ID = ?",nativeQuery = true)
-    Resume getResumebyId(Integer userid);
+    Resume getResumebyId(int userid);
 }

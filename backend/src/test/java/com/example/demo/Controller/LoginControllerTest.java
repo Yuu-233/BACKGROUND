@@ -27,14 +27,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 public class LoginControllerTest extends DemoApplicationTests {
 
     @Test
-    public void contextLoads(){}
+    public void contextLoads() {
+    }
 
 
     private MockMvc mockMvc;//模拟网络请求
@@ -44,6 +44,7 @@ public class LoginControllerTest extends DemoApplicationTests {
 
 
     private ObjectMapper om = new ObjectMapper();
+
     @Before
     public void setUp() {
         mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
@@ -52,16 +53,36 @@ public class LoginControllerTest extends DemoApplicationTests {
     @AfterEach
     void tearDown() {
     }
-    @Test
-    public void login() throws Exception{
-        MvcResult result = mockMvc.perform(get("/login?username=Phyllys Beadnell&password=3819ooij").contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(status().isOk()).andExpect(jsonPath("$.status").value(1)).andReturn();
-    }
 
     @Test
-    public void register() throws Exception {
-        MvcResult result1 = mockMvc.perform(get("/register?username=Aurora Brown&password=789wedfgff&email=24277898967@177.com&phone=15996318788").contentType(MediaType.APPLICATION_JSON_VALUE))
+    public void login_admin() throws Exception {
+        MvcResult result = mockMvc.perform(get("/login?username=Tiffani Anstice&password=2152fyrx").contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.status").value(2)).andReturn();
+    }
+    @Test
+    public void login_disabled_user() throws Exception {
+        MvcResult result = mockMvc.perform(get("/login?username=Phyllys Beadnell&password=3819ooij").contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.status").value(3)).andReturn();
+    }
+    @Test
+    public void login_common_user() throws Exception {
+        MvcResult result = mockMvc.perform(get("/login?username=Concettina Mingus&password=0481ndux").contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk()).andExpect(jsonPath("$.status").value(1)).andReturn();
+    }
+    @Test
+    public void login_wrong() throws Exception {
+        MvcResult result = mockMvc.perform(get("/login?username=Concettina Mingus&password=0481n789").contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.status").value(0)).andReturn();
+    }
+    @Test
+    public void register_success() throws Exception {
+        MvcResult result1 = mockMvc.perform(get("/register?username=Aurora Tarantino&password=789wedfgff&email=24277898967@177.com&phone=15996318788").contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.status").value(1)).andReturn();
+    }
+    @Test
+    public void register_unsuccess() throws Exception {
+        MvcResult result1 = mockMvc.perform(get("/register?username=Concettina Mingus&password=0481ndux&email=24277898967@177.com&phone=15996318788").contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.status").value(0)).andReturn();
     }
 
 }
