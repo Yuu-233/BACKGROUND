@@ -33,6 +33,7 @@ public class EmployDaoImpl implements EmployDao {
     @Override
     public List<CompleteResumeInfo> getMyEmployees(Integer rec_id){
         List<Object> list = employRepository.getMyEmployees(rec_id);
+        System.out.println(list.size());
         List <CompleteResumeInfo> list1 = new ArrayList<CompleteResumeInfo>();
         for(int i=0;i<list.size();i++){
             Object[] obj = (Object[])list.get(i); //obj中保存的是查询出的对象的属性值
@@ -51,6 +52,7 @@ public class EmployDaoImpl implements EmployDao {
     @Override
     public List<CompleteEmployInfo> getEmpbyId(Integer userid){
         List<Object> list = employRepository.getEmpbyId(userid);
+        System.out.println(list.size());
         List<CompleteEmployInfo> list1 = new ArrayList<CompleteEmployInfo>();
         for(int i=0;i<list.size();i++){
             Object[] obj = (Object[])list.get(i); //obj中保存的是查询出的对象的属性值
