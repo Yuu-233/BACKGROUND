@@ -55,6 +55,8 @@ public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
 
         map.put("token",jwt);
         map.put("msg","登陆成功");
+        map.put("username",authResult.getName());
+        map.put("role",sb.toString());
 
         resp.setContentType("application/json:charset=utf-8");
         PrintWriter out = resp.getWriter();

@@ -14,6 +14,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import javax.persistence.Basic;
+
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
@@ -21,19 +23,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    @Override
+    public UserDetailsService userDetailsService(){
+        return new UserDetailsServiceImpl();
+    }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
+        /*auth.inMemoryAuthentication()
                 .withUser("javaboy")
                 .password(passwordEncoder().encode("123"))
                 .roles("user")
                 .and()
                 .withUser("admin")
                 .password(passwordEncoder().encode("123"))
-                .roles("admin");
-        //$2a$10$.NmQdukGjBnguZJIiQJfuuc8tGqX2DL4TkKc/NqfWfZCp58tAPbyu
-        //$2a$10$9pUKMqT/qDB0PVpqoqI77eNAixubgz6nUIzo7Jb4bhs7TR06c2OAa
-        //auth.userDetailsService(userDetailsService());
+                .roles("admin");*/
+
+        auth.userDetailsService(userDetailsService());
     }
 
     @Override

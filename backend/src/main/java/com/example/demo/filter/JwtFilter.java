@@ -28,6 +28,7 @@ public class JwtFilter extends GenericFilterBean {
         String username=claims.getSubject();
         List<GrantedAuthority> authorities = AuthorityUtils.commaSeparatedStringToAuthorityList((String) claims.get("authorities"));
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, null, authorities);
+        System.out.println(token);
         SecurityContextHolder.getContext().setAuthentication(token);
         filterChain.doFilter(servletRequest,servletResponse);
     }
