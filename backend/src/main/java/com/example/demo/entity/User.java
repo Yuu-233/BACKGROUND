@@ -19,6 +19,7 @@ public class User {
     private String Phone;
     private String Email;
     private int Role;
+    private String Encoded;
 
     public User() {}
 
@@ -64,5 +65,10 @@ public class User {
     @Column(name="Role")
     public int getRole(){return Role;}
     public void  setRole(int role){this.Role = role;}
+
+    @Basic
+    @Column(name="Encoded")
+    public String getEncoded(){return Encoded;}
+    public void setEncoded(String encoded){this.Encoded = encoded;}
 
 }
