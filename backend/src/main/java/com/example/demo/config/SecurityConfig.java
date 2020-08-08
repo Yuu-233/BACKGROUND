@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,6 +19,13 @@ import javax.persistence.Basic;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        //super.configure(web);
+        web.ignoring().antMatchers(HttpMethod.POST, "/login", "/register");
+    }
+
     @Bean
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -52,12 +60,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .hasRole("admin")
                 .antMatchers(HttpMethod.POST,"/login")
                 .permitAll()
-                .antMatchers(HttpMethod.POST,"/register")
-                .permitAll()
+                //.antMatchers(HttpMethod.POST,"/register")
+                //.permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilterBefore(new JwtLoginFilter("/login",authenticationManager()), UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(new JwtFilter(),UsernamePasswordAuthenticationFilter.class)
                 .csrf().disable();
     }
+
+
 }
