@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -25,6 +26,9 @@ public class UserServiceTest extends DemoApplicationTests {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @MockBean
     private UserRepository userRepository;
 
@@ -70,7 +74,8 @@ public class UserServiceTest extends DemoApplicationTests {
     @Test
     public void alter_user_info() {
         userService.alter_user_info(1, "Tiffani Anstice", "2152fyrx", "07041238030", "5897311806@564.com", 2);
-        verify(userRepository, times(1)).alter_user_info(1, "Tiffani Anstice", "2152fyrx", "07041238030", "5897311806@564.com", 2);
+        verify(userRepository, times(1)).alter_user_info(1, "Tiffani Anstice", "2152fyrx", "07041238030", "5897311806@564.com", 2,passwordEncoder.encode("2152fyrx"));
+        //userRepository的参数多了一个encoded,即加密后的密码
 //        verify(userRepository, times(1)).findUserByUsername("Tiffani Anstice");
     }
 

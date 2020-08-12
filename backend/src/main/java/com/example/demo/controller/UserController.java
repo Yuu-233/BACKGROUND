@@ -35,6 +35,13 @@ public class UserController {
         userService.change_state(userid);
     }
 
+    @CrossOrigin
+    @RequestMapping("/getUserbyUsername")
+    public User getUserbyUsername(@RequestParam("username")String username){
+        return userService.getUserbyUsername(username);
+    }
+
+
     @RequestMapping("/mylogin")
     public Object login( @RequestParam("username") String username,
                          @RequestParam("password") String password){
